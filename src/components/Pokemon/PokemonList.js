@@ -1,12 +1,16 @@
+import { useState } from "react";
+
 const PokemonList = () => {
+  const [arrDivs, setArrDivs] = useState(
+    Array.from({ length: 400 }, (_, i) => <div key={i} />)
+  );
+
   return (
     <div
       className='pokemon-list'
       data-testid='pokemonList'
     >
-      <div>
-        This will contain a list of all the pokemon in Scarlet and Violet.
-      </div>
+      {arrDivs}
     </div>
   );
 };

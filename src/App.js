@@ -5,14 +5,11 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <div
-      data-testid='app'
-      className='app'
-    >
+    <>
       <Header />
       <PokemonContainer />
       <Footer />
-    </div>
+    </>
   );
 };
 
