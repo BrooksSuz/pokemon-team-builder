@@ -1,0 +1,16 @@
+.pokemon-container {
+  display: flex;
+  flex: 1;
+}
+
+.pokemon-team {
+  display: flex;
+  background-color: darkcyan;
+  align-items: center;
+}
+
+.pokemon-list {
+  display: flex;
+  background-color: darkgoldenrod;
+  align-items: center;
+}
