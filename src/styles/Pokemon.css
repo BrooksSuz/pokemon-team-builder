@@ -5,12 +5,19 @@
 
 .pokemon-team {
   display: flex;
-  background-color: darkcyan;
-  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+div[class^=party] {
+  display: flex;
+  flex: 1;
+  background-color: darkmagenta;
 }
 
 .pokemon-list {
   display: flex;
+  flex: 3;
   background-color: darkgoldenrod;
   align-items: center;
 }
