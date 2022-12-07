@@ -1,3 +1,9 @@
+# Pokemon Team Builder
+
+A team builder for the newest games in the pokemon series, Scarlet and Violet.
+
+There are several of these that exist. This is my own take on them.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
