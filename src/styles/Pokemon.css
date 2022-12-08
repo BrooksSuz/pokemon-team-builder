@@ -38,8 +38,7 @@ div[class^=party] {
 
 .entry {
   margin: 5px;
-  border: 1px solid black;
-  background: white;
+  background: black;
   min-height: 70px;
   min-width: 70px;
 }
