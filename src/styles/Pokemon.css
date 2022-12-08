@@ -17,7 +17,29 @@ div[class^=party] {
 
 .pokemon-list {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex: 3;
   background-color: darkgoldenrod;
-  align-items: center;
+}
+
+.row-container {
+  max-height: 500px;
+  max-width: 1000px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.entry {
+  margin: 5px;
+  border: 1px solid black;
+  background: white;
+  min-height: 70px;
+  min-width: 70px;
 }

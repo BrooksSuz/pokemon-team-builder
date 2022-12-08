@@ -7,12 +7,6 @@ import PokemonList from './components/Pokemon/PokemonList';
 import Footer from './components/Footer';
 
 describe('Check if the components are in the document', () => {
-  it('App component rendered?', () => {
-    render(<App />);
-    const appComponent = screen.getByTestId('app');
-    expect(appComponent).toBeInTheDocument();
-  });
-
   it('Header component rendered?', () => {
     render(<Header />);
     const headerComponent = screen.getByTestId('header');
