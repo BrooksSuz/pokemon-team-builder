@@ -1,16 +1,17 @@
-/* const [arrDivs] = useState(
-  Array.from(
-    { length: 400 }, (_, i) => <div className={`entry-${i + 1}`} key={i} />
-  )
-); */
+import { useState, useEffect } from "react";
+import paldeaPokedex from "../../firebase.config";
 
 const PokemonList = () => {
   const entries = Array.from(
-    { length: 10 }, (_, i) => <div className='entry' />
+    { length: 10 }, (_, i) => <div className='entry' key={i} />
   );
-  const entryContainers = Array.from(
-    { length: 40 }, (_, i) => <div className='row'>{entries}</div>
-  );
+  const [entryContainers] = useState(Array.from(
+    { length: 40 }, (_, i) => <div className='row' key={i}>{entries}</div>
+  ));
+
+  useEffect(() => {
+    paldeaPokedex();
+  }, []);
 
   return (
     <div
