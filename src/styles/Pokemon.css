@@ -34,11 +34,12 @@ div[class^=party] {
 }
 
 .entry {
+  margin: 1px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   min-height: 120px;
   min-width: 120px;
-  margin: 5px;
   background: black;
 }

@@ -9,7 +9,14 @@ const PokemonList = () => {
     .then(res => {
       const tempEntries = [];
       res.map((pokemon, i) => {
-        tempEntries.push(<p className={`entry entry-${i}`} key={i}>{pokemon}</p>);
+        tempEntries.push(
+          <div
+            className={`entry entry-${i}`}
+            key={i}
+          >
+            {pokemon}
+          </div>
+        );
         return null;
       })
       setEntries(tempEntries);
