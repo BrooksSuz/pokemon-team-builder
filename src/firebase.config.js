@@ -17,12 +17,11 @@ const firestore = getFirestore(app);
 
 const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
 
-const paldeaPokedex = async () =>{
+const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokdexRef);
   if (mySnapshot.exists()) {
-    const docData = mySnapshot.data();
-    console.log(docData);
+    return mySnapshot.data().paldea;
   }
 }; 
 
-export default paldeaPokedex;
+export default getPaldeaPokedex;
