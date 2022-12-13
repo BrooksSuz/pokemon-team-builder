@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import getPaldeaPokedex from "../../firebase.config";
 
 const PokemonList = () => {
-  const [entries, setEntries] = useState(null);
+  const [entries, setEntries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   const getPokedex = async () => {
     return await getPaldeaPokedex();
   };
 
+  //TODO: store pokedex in state variable if possible
   const populateEntryContainer = async () => {
     const pokedex = await getPokedex();
     const arrCopyPokedex = [...pokedex];
@@ -25,7 +26,16 @@ const PokemonList = () => {
           className={'entry'}
           key={i}
         >
-          <span>{i}</span>
+          <span>
+            {
+              arrCopyPokedex.map((entry, j) => {
+                if (pokemon === entry) {
+                  return j + 1;
+                }
+                return null;
+              })
+            }
+          </span>
           <span>{pokemon}</span>
         </div>
       )
@@ -36,8 +46,8 @@ const PokemonList = () => {
   };
 
   useEffect(() => {
-    populateEntryContainer()
-  }, [searchTerm]);
+    populateEntryContainer();
+  }, [searchTerm])
 
   return (
     <div
