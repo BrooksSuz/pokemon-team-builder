@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import getPaldeaPokedex from "../../firebase.config";
+import PokemonSprites from "./PokemonSprites";
 
 const PokemonList = () => {
   const [pokedex, setPokedex] = useState([]);
@@ -28,10 +29,10 @@ const PokemonList = () => {
         {
           pokedex
             .filter(pokemon => {
-            return searchTerm === ''
-              ? pokemon
-              : pokemon.includes(searchTerm);
-          })
+              return searchTerm === ''
+                ? pokemon
+                : pokemon.includes(searchTerm);
+            })
             .map((pokemon, i) => (
             <div
               className='entry'
@@ -46,6 +47,10 @@ const PokemonList = () => {
                   }) + 1
                 }
               </span>
+              <PokemonSprites
+                pokemon={pokemon}
+                i={i}
+              />
               <span>{pokemon}</span>
             </div>
           ))

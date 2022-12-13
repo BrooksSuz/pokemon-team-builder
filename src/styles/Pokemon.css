@@ -25,6 +25,7 @@ div[class^=party] {
 }
 
 label {
+  position: sticky;
   margin-bottom: 10px;
 }
 
@@ -33,7 +34,7 @@ label {
   justify-content: center;
   flex-wrap: wrap;
   max-height: 500px;
-  max-width: 1100px;
+  max-width: 1174.5px;
   overflow-y: scroll;
 }
 
@@ -44,7 +45,7 @@ label {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  min-height: 120px;
-  min-width: 120px;
+  min-height: 110px;
+  min-width: 110px;
   background: black;
 }
