@@ -37,7 +37,7 @@ const PokemonList = () => {
 
   useEffect(() => {
     populateEntryContainer()
-  }, [entries]);
+  }, [searchTerm]);
 
   return (
     <div
