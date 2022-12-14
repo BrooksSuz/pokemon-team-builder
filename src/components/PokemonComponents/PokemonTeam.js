@@ -8,16 +8,16 @@ const PokemonTeam = (props) => {
       { length: 6 }, (_, i) => 
       <PartyPokemon
         num={i + 1}
-        partySlot={partySlot[i]}
+        partySlot={partySlot}
         key={i} 
       />
     )
   );
 
   //TODO: when partySlot changes, update party
-  useEffect(() => {
+  /* useEffect(() => {
 
-  }, [partySlot]);
+  }, [partySlot]); */
 
   return (
     <div

@@ -4,7 +4,14 @@ import PokemonTeam from "./PokemonTeam";
 import '../../styles/Pokemon.css';
 
 const PokemonContainer = () => {
-  const [partySlot, setPartySlot] = useState(new Array(6));
+  const [partySlot, setPartySlot] = useState({
+    'Poke-1': '',
+    'Poke-2': '',
+    'Poke-3': '',
+    'Poke-4': '',
+    'Poke-5': '',
+    'Poke-6': ''
+  });
 
   return (
     <div
