@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
 import Header from './components/Header';
 import PokemonContainer from './components/Pokemon/PokemonContainer';
 import PokemonTeam from './components/Pokemon/PokemonTeam';

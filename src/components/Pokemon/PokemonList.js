@@ -19,7 +19,7 @@ const PokemonList = () => {
         <input
           type='text'
           name='search-dex'
-          placeholder='Search Paldea...'
+          placeholder='Paldea Awaits...'
           onChange={e => setSearchTerm(e.target.value)}
         />
       </label>
@@ -51,7 +51,13 @@ const PokemonList = () => {
                 pokemon={pokemon}
                 i={i}
               />
-              <span>{pokemon}</span>
+              <span>
+                {
+                  pokemon.includes('-')
+                    ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')
+                    : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
+                }
+              </span>
             </div>
           ))
         }

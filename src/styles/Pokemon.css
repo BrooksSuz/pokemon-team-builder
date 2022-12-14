@@ -25,7 +25,6 @@ div[class^=party] {
 }
 
 label {
-  position: sticky;
   margin-bottom: 10px;
 }
 
