@@ -1,5 +1,5 @@
 const PartyPokemon = (props) => {
-  const { num } = props;
+  const { num, partySlot } = props;
   return (
     <div className={`party-${num}`}>Poke-{num}</div>
   );

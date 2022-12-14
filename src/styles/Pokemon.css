@@ -48,3 +48,11 @@ label {
   min-width: 110px;
   background: black;
 }
+
+img {
+  pointer-events: none;
+}
+
+span {
+  pointer-events: none;
+}

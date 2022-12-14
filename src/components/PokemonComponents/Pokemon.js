@@ -1,15 +1,5 @@
-import { useState, useEffect } from "react";
-import getPaldeaPokedex from "../../firebase.config";
-import PokemonSprites from "./PokemonSprites";
-
-const PokemonList = () => {
-  const [pokedex, setPokedex] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    getPaldeaPokedex().then(res => setPokedex(res));
-  }, []);
-
+const Pokemon = (props) => {
+  const { pokedex, searchTerm, setSearchTerm } = props;
   return (
     <div
       className='pokemon-list'
@@ -37,6 +27,7 @@ const PokemonList = () => {
             <div
               className='entry'
               key={i}
+              onClick={e => console.log(e.target.childNodes[2].textContent)}
             >
               <span>
                 {
@@ -47,9 +38,12 @@ const PokemonList = () => {
                   }) + 1
                 }
               </span>
-              <PokemonSprites
-                pokemon={pokemon}
-                i={i}
+              <img
+                src={`https://img.pokemondb.net/sprites/scarlet-violet/normal/${pokemon}.png`}
+                alt={`pokedex entry number ${i + 1}`} 
+                height='64'
+                width='64'
+                style={{ marginBottom: '5px' }}
               />
               <span>
                 {
@@ -66,4 +60,4 @@ const PokemonList = () => {
   );
 };
 
-export default PokemonList;
+export default Pokemon;

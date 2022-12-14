@@ -1,15 +1,18 @@
+import { useState } from "react";
 import PokemonList from "./PokemonList";
 import PokemonTeam from "./PokemonTeam";
 import '../../styles/Pokemon.css';
 
 const PokemonContainer = () => {
+  const [partySlot, setPartySlot] = useState(new Array(6));
+
   return (
     <div
       className='pokemon-container'
       data-testid='pokemonContainer'
     >
-      <PokemonTeam />
-      <PokemonList />
+      <PokemonTeam partySlot={partySlot} />
+      <PokemonList setPartySlot={setPartySlot} />
     </div>
   );
 };
