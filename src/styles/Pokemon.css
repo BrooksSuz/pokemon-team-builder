@@ -44,8 +44,8 @@ label {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  min-height: 110px;
-  min-width: 110px;
+  min-height: 115px;
+  min-width: 115px;
   background: black;
 }
 

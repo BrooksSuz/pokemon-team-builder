@@ -2,15 +2,23 @@ import { useState, useEffect } from "react";
 import getPaldeaPokedex from "../../firebase.config";
 
 const PokemonList = (props) => {
-  const { setPartySlot } = props;
+  const { party, setParty } = props;
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  /*
-    TODO:
-      create a function that maps through the current partySlot array and
-      sets the correct pokeSlot (probably the smallest index valued slot)
-  */
+  const handleOnClick = pokemon => {
+    const copyParty = Object.assign({}, party);
+    const keys = Object.keys(copyParty);
+
+    for (let i = 0; i < keys.length; i++) {
+      if (copyParty[keys[i]] === '') {
+        copyParty[keys[i]] = pokemon;
+        break;
+      }
+    }
+
+    setParty(copyParty);
+  };
 
   useEffect(() => {
     getPaldeaPokedex().then(res => setPokedex(res));
@@ -43,7 +51,7 @@ const PokemonList = (props) => {
             <div
               className='entry'
               key={i}
-              onClick={e => console.log(e.target.childNodes[2].textContent)}
+              onClick={e => handleOnClick(e.target.childNodes[2].textContent)}
             >
               <span>
                 {
