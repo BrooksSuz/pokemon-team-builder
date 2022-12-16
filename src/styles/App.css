@@ -24,9 +24,10 @@ body {
 }
 
 header {
+  min-width: 100%;
   display: flex;
   flex-direction: column;
-  align-self: center;
+  align-items: center;
 }
 
 img, picture, svg, video {
@@ -35,7 +36,8 @@ img, picture, svg, video {
 }
 
 footer {
+  min-width: 100%;
   display: flex;
   flex-direction: column;
-  align-self: center;
+  align-items: center;
 }
