@@ -6,25 +6,30 @@ import './styles/Pokemon.css';
 
 const App = () => {
   // Start state variables
-  const [party, setParty] = useState({
-    'poke-1': '',
-    'poke-2': '',
-    'poke-3': '',
-    'poke-4': '',
-    'poke-5': '',
-    'poke-6': ''
-  });
+  const [party, setParty] = useState(
+    Array.from({ length: 6 }, () => {
+      return { pokeName: '', pokeSprite: '' };
+    }
+  ));
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   // End state variables
 
-  const handleClick = pokemon => {
-    const copyParty = Object.assign({}, party);
-    const keys = Object.keys(copyParty);
+  const onClickAddPokemon = pokemon => {
+    const copyParty = [...party];
 
-    for (let i = 0; i < keys.length; i++) {
-      if (copyParty[keys[i]] === '') {
-        copyParty[keys[i]] = pokemon;
+    // Add sprite
+    for (let i = 0; i < copyParty.length; i++) {
+      if (copyParty[i].pokeSprite === '') {
+        copyParty[i].pokeSprite = `https://img.pokemondb.net/sprites/scarlet-violet/normal/${pokemon.charAt(0).toLowerCase() + pokemon.slice(1)}.png`;
+        break;
+      }
+    }
+
+    // Add name
+    for (let i = 0; i < copyParty.length; i++) {
+      if (copyParty[i].pokeName === '') {
+        copyParty[i].pokeName = pokemon;
         break;
       }
     }
@@ -39,6 +44,7 @@ const App = () => {
   return (
     <>
     <header data-testid='header'>
+      <button>Delete Entire Party</button>
       <h1>Pokemon Scarlet & Violet Team Builder</h1>
       <p>This is a team builder for the newest Pokemon games.</p>
     </header>
@@ -55,8 +61,7 @@ const App = () => {
         data-testid='pokemonTeam'
       >
         {
-          Array.from(
-            { length: 6 }, (_, i) => 
+          Array.from({ length: 6 }, (_, i) => 
             <PartySlot
               party={party}
               setParty={setParty}
@@ -97,7 +102,7 @@ const App = () => {
               <button
                 className='entry'
                 key={i}
-                onClick={e => handleClick(e.target.childNodes[2].textContent)}
+                onClick={e => onClickAddPokemon(e.target.childNodes[2].textContent)}
               >
                 <span>
                   {

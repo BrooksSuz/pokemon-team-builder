@@ -5,37 +5,41 @@ const PartySlot = (props) => {
   const divSlot = useRef();
   const btnDelete = useRef();
 
-  const handleClick = () => {
-    const copyParty = Object.assign({}, party);
-    const keys = Object.keys(copyParty);
+  const onClickDeleteSlot = () => {
+    const copyParty = [...party];
 
-    if (divSlot.current.childNodes[0].textContent) {
-      copyParty[keys[i]] = '';
+    if (divSlot.current.childNodes[1].textContent) {
+      copyParty[i] = { pokeName: '', pokeSprite: '' };
     }
 
     setParty(copyParty);
   };
-
-  useEffect(() => {
-    if (divSlot.current.childNodes[0].textContent) {
-      btnDelete.current.style.visibility = '';
-    } else if (!divSlot.current.childNodes[0].textContent) {
-      btnDelete.current.style.visibility = 'hidden';
-    }
-  }, [party]);
 
   return (
     <div
       className={`party-${i + 1}`}
       ref={divSlot}
     >
-      <span>{party[`poke-${i + 1}`]}</span>
-      <button
-        onClick={handleClick}
-        style={{ visibility: 'hidden' }}
-        ref={btnDelete}
-      >Delete Pokemon
-      </button>
+      {
+        party[i].pokeSprite
+        ? <img
+            src={`${party[i].pokeSprite}`}
+            alt={`Party slot number ${i + 1}`}
+            height='64px'
+            width='64px'
+          />
+        : null
+      }
+      <span>{party[i].pokeName}</span>
+      {
+        party[i].pokeName
+        ? <button
+            onClick={onClickDeleteSlot}
+            ref={btnDelete}
+          >Delete Pokemon
+        </button>
+        : null
+      }
     </div>
   );
 };
