@@ -13,6 +13,7 @@ const PartySlot = (props) => {
     }
 
     setParty(copyParty);
+    
   };
 
   return (

@@ -23,7 +23,19 @@ body {
   flex-direction: column;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
 img, picture, svg, video {
   display: block;
   max-width: 100%;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
