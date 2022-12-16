@@ -1,3 +1,5 @@
+import PartySlot from "./PartySlot";
+
 const PokemonTeam = (props) => {
   const { party, setParty } = props;
 
@@ -9,12 +11,12 @@ const PokemonTeam = (props) => {
       {
         Array.from(
           { length: 6 }, (_, i) => 
-          <div
-            className={`party-${i + 1}`}
-            key={i} 
-          >
-            {party[`poke-${i + 1}`]}
-          </div>
+          <PartySlot
+            party={party}
+            setParty={setParty}
+            i={i}
+            key={i}
+          />
         )
       }
     </div>

@@ -6,7 +6,7 @@ const PokemonList = (props) => {
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleOnClick = pokemon => {
+  const handleClick = pokemon => {
     const copyParty = Object.assign({}, party);
     const keys = Object.keys(copyParty);
 
@@ -48,10 +48,10 @@ const PokemonList = (props) => {
                 : pokemon.includes(searchTerm);
             })
             .map((pokemon, i) => (
-            <div
+            <button
               className='entry'
               key={i}
-              onClick={e => handleOnClick(e.target.childNodes[2].textContent)}
+              onClick={e => handleClick(e.target.childNodes[2].textContent)}
             >
               <span>
                 {
@@ -76,7 +76,7 @@ const PokemonList = (props) => {
                     : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
                 }
               </span>
-            </div>
+            </button>
           ))
         }
       </div>
