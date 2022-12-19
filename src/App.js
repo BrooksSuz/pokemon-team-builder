@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import PartySlot from './components/PartySlot';
-import NewTeam from './components/NewTeam';
-import TeamFolder from './components/TeamFolder';
-import SaveTeam from './components/SaveTeam';
-import DeleteTeam from './components/DeleteTeam';
+import TeamCreation from './components/TeamCreation';
 import getPaldeaPokedex from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
@@ -141,14 +138,7 @@ const App = () => {
           </div>
           {/* End entry-container */}
 
-          {/* Start selection-container */}
-          <div className='selection-container'>
-            <NewTeam />
-            <TeamFolder />
-            <SaveTeam />
-            <DeleteTeam />
-          </div>
-          {/* End selection-container */}
+          <TeamCreation />
 
         </div>
         {/* End pokemon-list */}
