@@ -48,7 +48,6 @@ label {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  flex: 1;
   min-height: 115px;
   min-width: 115px;
   background: black;

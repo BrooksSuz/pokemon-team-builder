@@ -33,12 +33,12 @@ const PartySlot = (props) => {
       <span>{party[i].pokeName}</span>
       {
         party[i].pokeName
-        ? <button
-            onClick={onClickDeleteSlot}
-            ref={btnDelete}
-          >Delete Pokemon
-        </button>
-        : null
+          ? <button
+              onClick={onClickDeleteSlot}
+              ref={btnDelete}
+              >Delete Pokemon
+            </button>
+          : null
       }
     </div>
   );

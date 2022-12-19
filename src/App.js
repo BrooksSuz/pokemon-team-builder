@@ -14,22 +14,19 @@ const App = () => {
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   // End state variables
-
+  
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];
 
-    // Add sprite
+    // Add name & sprite
     for (let i = 0; i < copyParty.length; i++) {
-      if (copyParty[i].pokeSprite === '') {
-        copyParty[i].pokeSprite = `https://img.pokemondb.net/sprites/scarlet-violet/normal/${pokemon.charAt(0).toLowerCase() + pokemon.slice(1)}.png`;
-        break;
-      }
-    }
-
-    // Add name
-    for (let i = 0; i < copyParty.length; i++) {
-      if (copyParty[i].pokeName === '') {
+      if (copyParty[i].pokeSprite === '' && copyParty[i].pokeName === '') {
         copyParty[i].pokeName = pokemon;
+        copyParty[i].pokeSprite = `https://img.pokemondb.net/sprites/scarlet-violet/normal/${
+          pokemon.includes(' ')
+            ? pokemon.charAt(0).toLowerCase() + pokemon.slice(1).replace(' ', '-')
+            : pokemon.charAt(0).toLowerCase() + pokemon.slice(1)
+        }.png`;
         break;
       }
     }
@@ -97,9 +94,7 @@ const App = () => {
           </label>
 
           {/* Start entry-container */}
-          <div
-            className='entry-container'
-          >
+          <div className='entry-container'>
             {
               pokedex
                 .filter(pokemon => {
@@ -131,7 +126,7 @@ const App = () => {
                   />
                   <span>
                     {
-                      pokemon.includes('-')
+                      pokemon.includes('-') && !(i > 391 && i < 396)
                         ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')
                         : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
                     }
