@@ -2,10 +2,17 @@ import { useState } from "react";
 
 const TeamFolder = () => {
   const [team, setTeam] = useState(null);
-  return (
-    <div className='team-folder'>
 
-    </div>
+  return (
+    <>
+      <label>
+        <select
+          name="team-selection"
+        >
+          <option>Default</option>
+        </select>
+      </label>
+    </>
   );
 };
 
