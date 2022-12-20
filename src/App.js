@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PartySlot from './components/PartySlot';
 import TeamCreation from './components/TeamCreation';
-import getPaldeaPokedex from "./firebase.config";
+import FormLogin from './components/FormLogin';
+import { getPaldeaPokedex, monitorAuthState, } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
 
@@ -14,8 +15,10 @@ const App = () => {
   ));
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [user, setUser] = useState(null);
   // End state variables
-  
+
+  // Start functions
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];
 
@@ -40,6 +43,7 @@ const App = () => {
       return { pokeName: '', pokeSprite: '' };
     }));
   };
+  // End functions
 
   useEffect(() => {
     getPaldeaPokedex().then(res => setPokedex(res));
@@ -53,7 +57,10 @@ const App = () => {
         <button
           style={{ alignSelf: 'flex-start' }}
           onClick={onClickDeleteParty}
-          >Delete Entire Party</button>
+          >
+            Delete Entire Party
+        </button>
+        <FormLogin />
       </header>
 
       {/* Start parent of pokemon-team & pokemon-list */}
@@ -85,7 +92,8 @@ const App = () => {
         className='pokemon-list'
         data-testid='pokemonList'
         >
-          <label> Search Pokedex:
+          <label>
+            Search Pokedex:
             <input
               type='text'
               name='search-dex'
@@ -138,7 +146,7 @@ const App = () => {
           </div>
           {/* End entry-container */}
 
-          <TeamCreation />
+          <TeamCreation user={user} />
 
         </div>
         {/* End pokemon-list */}

@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDkOisj0Kn2lzwSN1rx5oee8sR0bqY6j4Y",
@@ -12,10 +19,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const firestore = getFirestore(app);
-
+const auth = getAuth(app);
 const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
+const usersRef = doc(firestore, 'gen-ix/users');
 
 const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokdexRef);
@@ -24,4 +31,40 @@ const getPaldeaPokedex = async () => {
   }
 }; 
 
-export default getPaldeaPokedex;
+const getBrooks = async () => {
+  const mySnapshot = await getDoc(usersRef);
+  if (mySnapshot.exists()) {
+    return mySnapshot.data().brooks;
+  }
+};
+
+const loginEmailPassword = async () => {
+  const email = 'besusor7@gmail.com';
+  const pass = 'spoopy';
+  return await signInWithEmailAndPassword(auth, email, pass);
+};
+
+const createAccount = async (email, pass) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+    console.log(userCredential.user);
+  } catch(error) {
+    console.log(error);
+  }
+};
+
+const monitorAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      <span>Welcome, {user}</span>
+    } else {
+      console.log('You\'re not signed in');
+    }
+  });
+};
+
+const logout = async () => {
+  await signOut(auth);
+};
+
+export { getPaldeaPokedex, getBrooks, loginEmailPassword, createAccount, monitorAuthState, logout };
