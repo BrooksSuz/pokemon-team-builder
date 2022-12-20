@@ -6,7 +6,8 @@ const FormCreateAccount = (props) => {
   const inputEmail = useRef();
   const inputPassword = useRef();
 
-  const createPaldeaAccount = () => setUser(createAccount(inputEmail.current.value, inputPassword.current.value));
+  const createPaldeaAccount = () => createAccount(inputEmail.current.value, inputPassword.current.value).then(res => setUser(res));
+
   return (
     <form>
       <label>
