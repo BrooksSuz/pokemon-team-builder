@@ -63,7 +63,7 @@ const App = () => {
     } else {
       setFormLoginDisplay('block');
       setFormCreateDisplay('none');
-      btnCurrent.textContent = 'Need an account?'
+      btnCurrent.textContent = 'Need an account?';
     }
   };
   // End functions
@@ -103,7 +103,7 @@ const App = () => {
                 </button>
               </>
             : <div>
-                <span>{user}</span>
+                <span>Welcome, {user}</span>
                 <button
                   type='button'
                   onClick={logoutPaldea}

@@ -2,7 +2,7 @@
 
 A team builder for the newest games in the pokemon series, Scarlet and Violet.
 
-There are several of these that exist. This is my own take on them.
+There are several of these that exist. This is my take on them.
 
 # Getting Started with Create React App
 
