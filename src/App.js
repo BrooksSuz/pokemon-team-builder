@@ -3,7 +3,7 @@ import PartySlot from './components/PartySlot';
 import TeamCreation from './components/TeamCreation';
 import FormLogin from './components/FormLogin';
 import FormCreateAccount from './components/FormCreateAccount';
-import { getPaldeaPokedex } from "./firebase.config";
+import { getPaldeaPokedex, logout } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
 
@@ -17,7 +17,11 @@ const App = () => {
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [user, setUser] = useState('');
+  const [formLoginDisplay, setFormLoginDisplay] = useState('block');
+  const [formCreateDisplay, setFormCreateDisplay] = useState('none');
   // End state variables
+
+  const btnHideComponents = useRef();
 
   // Start functions
   const onClickAddPokemon = pokemon => {
@@ -44,6 +48,24 @@ const App = () => {
       return { pokeName: '', pokeSprite: '' };
     }));
   };
+
+  const logoutPaldea = () => {
+    setUser('');
+    logout();
+  };
+
+  const hideComponentShowAnother = () => {
+    const btnCurrent = btnHideComponents.current;
+    if (formLoginDisplay === 'block' && formCreateDisplay === 'none') {
+      setFormLoginDisplay('none');
+      setFormCreateDisplay('block');
+      btnCurrent.textContent = 'Whoopsie, take me back';
+    } else {
+      setFormLoginDisplay('block');
+      setFormCreateDisplay('none');
+      btnCurrent.textContent = 'Need an account?'
+    }
+  };
   // End functions
 
   useEffect(() => {
@@ -62,16 +84,35 @@ const App = () => {
             Delete Entire Party
         </button>
         {
-          user !== ''
-            ? <FormLogin
-                user={user}
-                setUser={setUser}
-              />
-            : <FormCreateAccount
-                user={user}
-                setUser={setUser}
-              />
+          user === ''
+            ? <>
+                <FormLogin
+                  setUser={setUser}
+                  formLoginDisplay={formLoginDisplay}
+                />
+                <FormCreateAccount
+                  setUser={setUser}
+                  formCreateDisplay={formCreateDisplay}
+                />
+                <button
+                  type='button'
+                  onClick={hideComponentShowAnother}
+                  ref={btnHideComponents}
+                >
+                  Need an account?
+                </button>
+              </>
+            : <div>
+                <span>{user}</span>
+                <button
+                  type='button'
+                  onClick={logoutPaldea}
+                >
+                  Logout
+                </button>
+              </div>
         }
+        
       </header>
 
       {/* Start parent of pokemon-party & pokemon-list */}

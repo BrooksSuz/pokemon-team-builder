@@ -32,7 +32,12 @@ const getPaldeaPokedex = async () => {
 }; 
 
 const loginEmailPassword = async (email, pass) => {
-  return await signInWithEmailAndPassword(auth, email, pass);
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+    return userCredential.user.email;
+  } catch(error) {
+    return `There was an error ${error}`;
+  }
 };
 
 const createAccount = async (email, pass) => {
@@ -40,7 +45,7 @@ const createAccount = async (email, pass) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
     return userCredential.user.email;
   } catch(error) {
-    return `There was an error${error}`;
+    return `There was an error ${error}`;
   }
 };
 

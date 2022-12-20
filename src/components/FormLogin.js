@@ -1,18 +1,24 @@
 import { useRef } from "react";
-import { loginEmailPassword, logout } from "../firebase.config";
+import { loginEmailPassword } from "../firebase.config";
 
 const FormLogin = (props) => {
-  const { user, setUser } = props;
+  const { setUser, formLoginDisplay } = props;
 
   // Start ref variables
   const inputEmail = useRef();
   const inputPassword = useRef();
   // End ref variables
 
-  const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value);
+  const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value).then(res => {
+    try {
+      setUser(res);
+    } catch(error) {
+      console.log(error);
+    }
+  });
 
   return (
-    <form>
+    <form style={{ display: `${formLoginDisplay}` }}>
       <label>
         Email:
         <input
@@ -36,12 +42,6 @@ const FormLogin = (props) => {
         onClick={loginPaldea}
       >
         Sign In
-      </button>
-      <button
-        type='button'
-        onClick={logout}
-      >
-        Logout
       </button>
     </form>
   );
