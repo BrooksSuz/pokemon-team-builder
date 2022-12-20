@@ -31,40 +31,37 @@ const getPaldeaPokedex = async () => {
   }
 }; 
 
-const getBrooks = async () => {
-  const mySnapshot = await getDoc(usersRef);
-  if (mySnapshot.exists()) {
-    return mySnapshot.data().brooks;
-  }
-};
-
-const loginEmailPassword = async () => {
-  const email = 'besusor7@gmail.com';
-  const pass = 'spoopy';
+const loginEmailPassword = async (email, pass) => {
   return await signInWithEmailAndPassword(auth, email, pass);
 };
 
 const createAccount = async (email, pass) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-    console.log(userCredential.user);
+    return userCredential.user.email;
   } catch(error) {
-    console.log(error);
+    return `There was an error${error}`;
   }
-};
-
-const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
-    if (user) {
-      <span>Welcome, {user}</span>
-    } else {
-      console.log('You\'re not signed in');
-    }
-  });
 };
 
 const logout = async () => {
   await signOut(auth);
 };
 
-export { getPaldeaPokedex, getBrooks, loginEmailPassword, createAccount, monitorAuthState, logout };
+export {
+  getPaldeaPokedex,
+  loginEmailPassword,
+  createAccount,
+  logout
+};
+
+/* const monitorAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      console.log(user);
+    } else {
+      console.log('You\'re not signed in');
+    }
+  });
+}; */
+

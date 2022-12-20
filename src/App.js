@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import PartySlot from './components/PartySlot';
 import TeamCreation from './components/TeamCreation';
 import FormLogin from './components/FormLogin';
-import { getPaldeaPokedex, monitorAuthState, } from "./firebase.config";
+import FormCreateAccount from './components/FormCreateAccount';
+import { getPaldeaPokedex } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
 
@@ -15,7 +16,7 @@ const App = () => {
   ));
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
   // End state variables
 
   // Start functions
@@ -60,18 +61,28 @@ const App = () => {
           >
             Delete Entire Party
         </button>
-        <FormLogin />
+        {
+          user !== ''
+            ? <FormLogin
+                user={user}
+                setUser={setUser}
+              />
+            : <FormCreateAccount
+                user={user}
+                setUser={setUser}
+              />
+        }
       </header>
 
-      {/* Start parent of pokemon-team & pokemon-list */}
+      {/* Start parent of pokemon-party & pokemon-list */}
       <div
         className='pokemon-container'
         data-testid='pokemonContainer'
       >
 
-        {/* Start pokemon-team */}
+        {/* Start pokemon-party */}
         <div
-          className='pokemon-team'
+          className='pokemon-party'
           data-testid='pokemonTeam'
         >
           {
@@ -85,7 +96,7 @@ const App = () => {
             )
           }
         </div>
-        {/* End pokemon-team */}
+        {/* End pokemon-party */}
 
         {/* Start pokemon-list */}
         <div
@@ -152,7 +163,7 @@ const App = () => {
         {/* End pokemon-list */}
 
       </div>
-      {/* End parent of pokemon-team & pokemon-list */}
+      {/* End parent of pokemon-party & pokemon-list */}
         
       <footer data-testid='footer'>
         This project was made by me :D

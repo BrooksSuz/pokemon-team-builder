@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { getBrooks } from "../firebase.config";
 
 const TeamCreation = (props) => {
   const { user } = props;
@@ -24,10 +23,6 @@ const TeamCreation = (props) => {
     }
   };
 
-  const onClickSaveTeam = () => {
-    getBrooks().then(res => console.log(res));
-  };
-
   return (
     <form className='team-creation'>
       <button
@@ -42,7 +37,6 @@ const TeamCreation = (props) => {
       </select>
       <button
         type='button'
-        onClick={onClickSaveTeam}
         ref={btnSave}
       >Save Team
       </button>

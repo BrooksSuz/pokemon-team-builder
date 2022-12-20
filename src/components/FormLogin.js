@@ -1,14 +1,18 @@
 import { useRef } from "react";
-import { loginEmailPassword, createAccount, logout } from "../firebase.config";
+import { loginEmailPassword, logout } from "../firebase.config";
 
-const FormLogin = () => {
+const FormLogin = (props) => {
+  const { user, setUser } = props;
+
+  // Start ref variables
   const inputEmail = useRef();
   const inputPassword = useRef();
+  // End ref variables
 
-  const createPaldeaAccount = () => createAccount(inputEmail.current.value, inputPassword.current.value);
+  const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value);
 
   return (
-    <form style={{ alignSelf: 'flex-end' }}>
+    <form>
       <label>
         Email:
         <input
@@ -29,15 +33,9 @@ const FormLogin = () => {
       </label>
       <button
         type='button'
-        onClick={loginEmailPassword}
+        onClick={loginPaldea}
       >
         Sign In
-      </button>
-      <button
-        type='button'
-        onClick={createPaldeaAccount}
-      >
-        Create Account
       </button>
       <button
         type='button'

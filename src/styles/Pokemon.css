@@ -3,7 +3,7 @@
   flex: 1;
 }
 
-.pokemon-team {
+.pokemon-party {
   display: flex;
   flex-direction: column;
   flex: 1;
