@@ -5,7 +5,7 @@ import FormLogin from './components/FormLogin';
 import FormCreateAccount from './components/FormCreateAccount';
 import LoggedIn from './components/LoggedIn';
 import PokemonCard from './components/PokemonCard';
-import { getPaldeaPokedex, logout } from "./firebase.config";
+import { getPaldeaPokedex } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
 
@@ -19,6 +19,7 @@ const App = () => {
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [user, setUser] = useState('');
+  const [userSignedIn, setUserSignedIn] = useState(false);
   // End state variables
   
   // Start ref variables
@@ -33,11 +34,6 @@ const App = () => {
       return { pokeName: '', pokeSprite: '' };
     });
     setParty(arr);
-  };
-
-  const logoutPaldea = () => {
-    setUser('');
-    logout();
   };
 
   const changeDisplayForms = () => {
@@ -73,14 +69,16 @@ const App = () => {
             Delete Entire Party
         </button>
         {
-          user === ''
-            ? <>
+          !userSignedIn
+            ?  <>
                 <FormLogin
                   setUser={setUser}
+                  setUserSignedIn={setUserSignedIn}
                   ref={formLogin}
                 />
                 <FormCreateAccount
                   setUser={setUser}
+                  setUserSignedIn={setUserSignedIn}
                   ref={formCreate}
                 />
                 <button
@@ -93,7 +91,8 @@ const App = () => {
               </>
             : <LoggedIn
                 user={user}
-                logoutPaldea={logoutPaldea}  
+                setUser={setUser}
+                setUserSignedIn={setUserSignedIn}
               />
         }
         

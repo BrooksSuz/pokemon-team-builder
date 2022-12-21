@@ -1,23 +1,40 @@
 import { useRef, forwardRef } from "react";
-import { loginEmailPassword, monitorAuthState } from "../firebase.config";
+import { loginEmailPassword } from "../firebase.config";
 
 const FormLogin = forwardRef((props, ref) => {
-  const { setUser } = props;
+  const { setUser, setUserSignedIn } = props;
 
   // Start ref variables
   const inputEmail = useRef();
   const inputPassword = useRef();
+  const spanError = useRef();
   // End ref variables
 
   const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value).then(res => {
-    const authStatus = monitorAuthState();
-    if (authStatus !== null) {
-      setUser(res);
+    const spanStyle = spanError.current.style;
+    if (res === null) {
+      spanStyle.display = 'inline';
+      return null;
     }
+
+    if (spanStyle.display === 'inline') {
+      spanStyle.display = 'none';
+    }
+
+    setUser(res);
+    setUserSignedIn(true);
   });
 
   return (
-    <form style={{ display: 'block' }} ref={ref}>
+    <form
+      style={{ display: 'block' }}
+      ref={ref}
+    >
+      <span
+        style={{ display: 'none' }}
+        ref={spanError}
+      >
+          Something went wrong, sorry!</span>
       <label>
         Email:
         <input

@@ -1,10 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, addDoc, setDoc } from "firebase/firestore";
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signOut
 } from "firebase/auth";
 
@@ -22,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 const auth = getAuth(app);
 const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
+const db = getFirestore();
 
 const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokdexRef);
@@ -32,26 +32,24 @@ const getPaldeaPokedex = async () => {
 
 const loginEmailPassword = async (email, pass) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-    return userCredential.user.email;
+    const userCredentials = await signInWithEmailAndPassword(auth, email, pass);
+    return userCredentials.user.email;
   } catch(error) {
-    return `There was an error ${error}`;
+    return null;
   }
 };
 
 const createAccount = async (email, pass) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-    return userCredential.user.email;
+    const userCredentials = await createUserWithEmailAndPassword(auth, email, pass);
+    await setDoc(doc(db, 'users', userCredentials.user.uid), {
+      email: userCredentials.user.email
+    });
+    return userCredentials.user.email;
   } catch(error) {
-    return `There was an error ${error}`;
+    console.log(error);
+    return null;
   }
-};
-
-const monitorAuthState = () => {
-  auth.onAuthStateChanged(user => {
-    return user;
-  });
 };
 
 const logout = async () => {
@@ -62,6 +60,5 @@ export {
   getPaldeaPokedex,
   loginEmailPassword,
   createAccount,
-  monitorAuthState,
   logout
 };
