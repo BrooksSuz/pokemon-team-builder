@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const PartySlot = (props) => {
   const { party, setParty, i } = props;
@@ -36,7 +36,8 @@ const PartySlot = (props) => {
           ? <button
               onClick={onClickDeleteSlot}
               ref={btnDelete}
-              >Delete Pokemon
+            >
+              Delete Pokemon
             </button>
           : null
       }

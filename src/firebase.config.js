@@ -4,7 +4,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signOut
 } from "firebase/auth";
 
@@ -22,7 +21,6 @@ const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 const auth = getAuth(app);
 const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
-const usersRef = doc(firestore, 'gen-ix/users');
 
 const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokdexRef);
@@ -59,14 +57,3 @@ export {
   createAccount,
   logout
 };
-
-/* const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
-    if (user) {
-      console.log(user);
-    } else {
-      console.log('You\'re not signed in');
-    }
-  });
-}; */
-
