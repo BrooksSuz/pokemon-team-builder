@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signOut
 } from "firebase/auth";
 
@@ -47,6 +48,12 @@ const createAccount = async (email, pass) => {
   }
 };
 
+const monitorAuthState = () => {
+  auth.onAuthStateChanged(user => {
+    return user;
+  });
+};
+
 const logout = async () => {
   await signOut(auth);
 };
@@ -55,5 +62,6 @@ export {
   getPaldeaPokedex,
   loginEmailPassword,
   createAccount,
+  monitorAuthState,
   logout
 };

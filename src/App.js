@@ -3,6 +3,7 @@ import PartySlot from './components/PartySlot';
 import FormTeamCreation from './components/FormTeamCreation';
 import FormLogin from './components/FormLogin';
 import FormCreateAccount from './components/FormCreateAccount';
+import LoggedIn from './components/LoggedIn';
 import PokemonCard from './components/PokemonCard';
 import { getPaldeaPokedex, logout } from "./firebase.config";
 import './styles/App.css';
@@ -90,15 +91,10 @@ const App = () => {
                   Need an account?
                 </button>
               </>
-            : <div>
-                <span>Welcome, {user}</span>
-                <button
-                  type='button'
-                  onClick={logoutPaldea}
-                >
-                  Logout
-                </button>
-              </div>
+            : <LoggedIn
+                user={user}
+                logoutPaldea={logoutPaldea}  
+              />
         }
         
       </header>

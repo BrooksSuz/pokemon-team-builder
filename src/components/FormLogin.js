@@ -1,5 +1,5 @@
 import { useRef, forwardRef } from "react";
-import { loginEmailPassword } from "../firebase.config";
+import { loginEmailPassword, monitorAuthState } from "../firebase.config";
 
 const FormLogin = forwardRef((props, ref) => {
   const { setUser } = props;
@@ -10,10 +10,9 @@ const FormLogin = forwardRef((props, ref) => {
   // End ref variables
 
   const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value).then(res => {
-    try {
+    const authStatus = monitorAuthState();
+    if (authStatus !== null) {
       setUser(res);
-    } catch(error) {
-      console.log(error);
     }
   });
 
