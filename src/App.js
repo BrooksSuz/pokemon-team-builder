@@ -18,10 +18,10 @@ const App = () => {
   const [pokedex, setPokedex] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [user, setUser] = useState('');
-  const [formLoginDisplay, setFormLoginDisplay] = useState('block');
-  const [formCreateDisplay, setFormCreateDisplay] = useState('none');
   // End state variables
-
+  
+  const formLogin = useRef();
+  const formCreate = useRef();
   const btnHideComponents = useRef();
 
   // Start functions
@@ -37,7 +37,20 @@ const App = () => {
   };
 
   const hideComponentShowAnother = () => {
+    const loginStyle = formLogin.current.style;
+    const createStyle = formCreate.current.style;
     const btnCurrent = btnHideComponents.current;
+
+    if (loginStyle.display === 'block' && createStyle.display === 'none') {
+      loginStyle.display = 'none';
+      createStyle.display ='block';
+      btnCurrent.textContent = 'Whoopsie, take me back';
+    } else {
+      loginStyle.display = 'block';
+      createStyle.display = 'none';
+      btnCurrent.textContent = 'Need an account?';
+    }
+    /* const btnCurrent = btnHideComponents.current;
     if (formLoginDisplay === 'block' && formCreateDisplay === 'none') {
       setFormLoginDisplay('none');
       setFormCreateDisplay('block');
@@ -46,7 +59,7 @@ const App = () => {
       setFormLoginDisplay('block');
       setFormCreateDisplay('none');
       btnCurrent.textContent = 'Need an account?';
-    }
+    } */
   };
   // End functions
 
@@ -70,11 +83,11 @@ const App = () => {
             ? <>
                 <FormLogin
                   setUser={setUser}
-                  formLoginDisplay={formLoginDisplay}
+                  ref={formLogin}
                 />
                 <FormCreateAccount
                   setUser={setUser}
-                  formCreateDisplay={formCreateDisplay}
+                  ref={formCreate}
                 />
                 <button
                   type='button'

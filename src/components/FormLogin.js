@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useRef, forwardRef } from "react";
 import { loginEmailPassword } from "../firebase.config";
 
-const FormLogin = (props) => {
+const FormLogin = forwardRef((props, ref) => {
   const { setUser, formLoginDisplay } = props;
 
   // Start ref variables
@@ -18,7 +18,7 @@ const FormLogin = (props) => {
   });
 
   return (
-    <form style={{ display: `${formLoginDisplay}` }}>
+    <form style={{ display: 'block' }} ref={ref}>
       <label>
         Email:
         <input
@@ -45,6 +45,6 @@ const FormLogin = (props) => {
       </button>
     </form>
   );
-};
+});
 
 export default FormLogin;

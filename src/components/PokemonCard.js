@@ -1,5 +1,5 @@
 const PokemonCard = (props) => {
-  const { party, setParty, pokedex, pokemon, i} = props;
+  const { party, setParty, pokedex, pokemon, i } = props;
 
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];

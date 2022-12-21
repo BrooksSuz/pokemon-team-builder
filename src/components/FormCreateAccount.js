@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useRef, forwardRef } from "react";
 import { createAccount } from "../firebase.config";
 
-const FormCreateAccount = (props) => {
+const FormCreateAccount = forwardRef((props, ref) => {
   const { setUser, formCreateDisplay } = props;
   const inputEmail = useRef();
   const inputPassword = useRef();
@@ -15,11 +15,12 @@ const FormCreateAccount = (props) => {
   });
 
   return (
-    <form style={{ display: `${formCreateDisplay}` }}>
+    <form style={{ display: 'none' }} ref={ref}>
       <label>
         Email:
         <input
           type='email'
+          placeholder='Enter an email'
           ref={inputEmail}
         />
       </label>
@@ -27,6 +28,7 @@ const FormCreateAccount = (props) => {
         Password:
         <input
           type='password'
+          placeholder='Enter a password'
           ref={inputPassword}
         />
       </label>
@@ -38,6 +40,6 @@ const FormCreateAccount = (props) => {
       </button>
     </form>
   );
-};
+});
 
 export default FormCreateAccount;
