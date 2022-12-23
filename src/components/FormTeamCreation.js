@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import { getParty, updateParty } from "../firebase.config";
+import { getParties, updateParty } from "../firebase.config";
 
 const FormTeamCreation = (props) => {
-  const { userSignedIn, party } = props;
+  const { userSignedIn, party, setParty } = props;
 
   // Start ref variables
   const selectTeam = useRef();
@@ -31,9 +31,25 @@ const FormTeamCreation = (props) => {
     updateParty(party);
   };
 
+  const getPaldeaParties = async () => {
+    const parties = await getParties();
+    return parties;
+  };
+
+  const setOptions = async () => {
+    const parties = getPaldeaParties();
+    const keys = Object.keys(await parties);
+    
+    for (let i = 0; i < keys.length; i++) {
+      selectTeam.current.options[selectTeam.current.length] = new Option(`Party ${i + 1}`, keys[i]);
+      selectTeam.current.options[(selectTeam.current.length) - 1].onclick = () => getPaldeaParties().then(res => setParty(res[`party-${i + 1}`]));
+    }
+    console.log(selectTeam.current.options);
+  };
+
   useEffect(() => {
     if (userSignedIn) {
-      getParty();
+      setOptions();
     }
   }, [userSignedIn]);
 

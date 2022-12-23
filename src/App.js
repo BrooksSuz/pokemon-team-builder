@@ -161,6 +161,7 @@ const App = () => {
           <FormTeamCreation
             userSignedIn={userSignedIn}
             party={party}
+            setParty={setParty}
           />
 
         </div>

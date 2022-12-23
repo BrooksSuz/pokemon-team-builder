@@ -64,14 +64,12 @@ const createAccount = async (email, pass) => {
   }
 };
 
-const getParty = async () => {
+const getParties = async () => {
   const partyRef = doc(firestore, 'users', userUID);
   const docSnap = await getDoc(partyRef);
 
   if (docSnap.exists()) {
-    console.log('Document data:', docSnap.data().parties['party-1']);
-  } else {
-    console.log('No such document!');
+    return docSnap.data().parties;
   }
 };
 
@@ -95,7 +93,7 @@ export {
   getPaldeaPokedex,
   loginEmailPassword,
   createAccount,
-  getParty,
+  getParties,
   updateParty,
   logout
 };
