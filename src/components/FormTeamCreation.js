@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { getParty, updateParty } from "../firebase.config";
 
 const FormTeamCreation = (props) => {
-  const { user } = props;
+  const { userSignedIn, party } = props;
 
   // Start ref variables
   const selectTeam = useRef();
@@ -13,7 +14,7 @@ const FormTeamCreation = (props) => {
   const onClickShowInput = () => {
     const labelTeamStyle = labelTeam.current.style;
 
-    if (user === '') {
+    if (!userSignedIn) {
       alert('To create a team, you need to login.');
       return null;
     }
@@ -25,6 +26,16 @@ const FormTeamCreation = (props) => {
       inputTeam.current.value = '';
     }
   };
+
+  const updatePaldea = () => {
+    updateParty(party);
+  };
+
+  useEffect(() => {
+    if (userSignedIn) {
+      getParty();
+    }
+  }, [userSignedIn]);
 
   return (
     <form className='team-creation'>
@@ -42,11 +53,14 @@ const FormTeamCreation = (props) => {
       </select>
       <button
         type='button'
+        onClick={updatePaldea}
         ref={btnSave}
       >
         Save Team
       </button>
-      <button type='button'>Delete Team</button>
+      <button
+        type='button'
+      >Delete Team</button>
       <label
         style={{ display: 'none' }}
         ref={labelTeam}

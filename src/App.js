@@ -22,7 +22,7 @@ const App = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
   // End state variables
   
-  // Start ref variables
+  // Start ref 
   const formLogin = useRef();
   const formCreate = useRef();
   const btnHideComponents = useRef();
@@ -158,7 +158,10 @@ const App = () => {
           </div>
           {/* End entry-container */}
 
-          <FormTeamCreation user={user} />
+          <FormTeamCreation
+            userSignedIn={userSignedIn}
+            party={party}
+          />
 
         </div>
         {/* End pokemon-list */}
