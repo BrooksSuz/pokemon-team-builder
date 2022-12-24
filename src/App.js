@@ -37,13 +37,6 @@ const App = () => {
     setParty(arr);
   };
 
-  const changeDeleteVisibility = party.some(slot => {
-    for (const keys in slot) {
-      return slot[keys] === '' ? false : true;
-    }
-    return null;
-  });
-
   const changeDisplayForms = () => {
     const loginStyle = formLogin.current.style;
     const createStyle = formCreate.current.style;
@@ -67,7 +60,12 @@ const App = () => {
 
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
-    changeDeleteVisibility
+    party.some(slot => {
+      for (const key in slot) {
+        return slot[key] === '' ? false : true;
+      }
+      return null;
+    })
       ? btnStyle.visibility = 'visible'
       : btnStyle.visibility = 'hidden';
   }, [party]);
@@ -133,6 +131,11 @@ const App = () => {
               />
             )
           }
+          <FormTeamCreation
+            party={party}
+            setParty={setParty}
+            userSignedIn={userSignedIn}
+          />
         </div>
         {/* End pokemon-party */}
 
@@ -172,12 +175,6 @@ const App = () => {
             }
           </div>
           {/* End entry-container */}
-
-          <FormTeamCreation
-            party={party}
-            setParty={setParty}
-            userSignedIn={userSignedIn}
-          />
 
         </div>
         {/* End pokemon-list */}

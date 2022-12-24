@@ -7,7 +7,7 @@ const FormTeamCreation = (props) => {
   // Start ref variables
   const formCreation = useRef();
   const selectTeam = useRef();
-  const btnUpdate = useRef();
+  const btnSave = useRef();
   // End ref variables
 
   const updatePaldeaParty = () => {
@@ -26,6 +26,7 @@ const FormTeamCreation = (props) => {
   return (
     <form
       className='team-creation'
+      style={{ position: 'absolute', alignSelf: 'flex-end' }}
       ref={formCreation}
     >
       <select
@@ -53,10 +54,11 @@ const FormTeamCreation = (props) => {
       </select>
       <button
         type='button'
+        style={{ margin: '10px' }}
         onClick={updatePaldeaParty}
-        ref={btnUpdate}
+        ref={btnSave}
       >
-        Update Team
+        Save/Update Team
       </button>
     </form>
   );

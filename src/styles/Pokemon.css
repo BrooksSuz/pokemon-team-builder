@@ -58,13 +58,18 @@ label {
 }
 
 .entry {
+  background-color: var(--main-color-one);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   min-height: 115px;
   min-width: 115px;
-  background: black;
+  transition-duration: 0.1s;
+}
+
+.entry:hover {
+  background-color: black;
 }
 
 img {
