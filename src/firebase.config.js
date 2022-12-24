@@ -45,16 +45,9 @@ const createAccount = async (email, pass) => {
 
     await setDoc(doc(firestore, 'users', userCredentials.user.uid), {
       parties: {
-        'party-0': [],
         'party-1': [],
         'party-2': [],
-        'party-3': [],
-        'party-4': [],
-        'party-5': [],
-        'party-6': [],
-        'party-7': [],
-        'party-8': [],
-        'party-9': []
+        'party-3': []
       }
     });
     
@@ -81,26 +74,27 @@ const getParties = async () => {
   const docSnap = await getDoc(userRef);
 
   if (docSnap.exists()) {
-    return docSnap.data().parties;
+    return docSnap.data();
   }
 };
 
-// TODO: Attempt to make this more dynamic if possible
 // Function that adds/updates the user's parties
-const updateParty = async arr => {
+const updateParty = async (arr, selectedOption) => {
   const userRef = doc(firestore, 'users', userUID);
-  const parties = await getParties();
-  const keys = Object.keys(parties);
 
-  keys.map(async (key, i) => {
-    if (key[i] === arr) {
-      await updateDoc(userRef, {
-        parties : {
-          
-        }
-      });
-    }
-  });
+  if (selectedOption === 'party-1') {
+    await updateDoc(userRef, {
+      'parties.party-1': arr
+    });
+  } else if (selectedOption === 'party-2') {
+    await updateDoc(userRef, {
+      'parties.party-2': arr
+    });
+  } else if (selectedOption === 'party-3') {
+    await updateDoc(userRef, {
+      'parties.party-3': arr
+    });
+  }
 };
 
 // Function that logs users out
