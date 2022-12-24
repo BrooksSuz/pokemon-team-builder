@@ -90,6 +90,7 @@ const App = () => {
                 </button>
               </>
             : <LoggedIn
+                setParty={setParty}
                 user={user}
                 setUser={setUser}
                 setUserSignedIn={setUserSignedIn}

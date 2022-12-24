@@ -29,6 +29,9 @@ const app = initializeApp(firebaseConfig);
 const firestore = getFirestore();
 const auth = getAuth(app);
 const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
+const blankParty = Array.from({ length: 6 }, () => {
+  return { pokeName: '', pokeSprite: '' };
+});
 
 // Function that gets pokedex information
 const getPaldeaPokedex = async () => {
@@ -45,9 +48,9 @@ const createAccount = async (email, pass) => {
 
     await setDoc(doc(firestore, 'users', userCredentials.user.uid), {
       parties: {
-        'party-1': [],
-        'party-2': [],
-        'party-3': []
+        'party-1': blankParty,
+        'party-2': blankParty,
+        'party-3': blankParty
       }
     });
     
