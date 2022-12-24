@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const PartySlot = (props) => {
   const { party, setParty, i } = props;

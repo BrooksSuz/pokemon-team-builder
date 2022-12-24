@@ -27,6 +27,7 @@ const App = () => {
   const formCreate = useRef();
   const btnHideComponents = useRef();
   const btnDeleteAll = useRef();
+  const spanInfo = useRef();
   // End ref variables
 
   // Start functions
@@ -60,14 +61,21 @@ const App = () => {
 
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
-    party.some(slot => {
+    const spanStyle = spanInfo.current.style;
+    const test = party.some(slot => {
       for (const key in slot) {
         return slot[key] === '' ? false : true;
       }
       return null;
-    })
-      ? btnStyle.visibility = 'visible'
-      : btnStyle.visibility = 'hidden';
+    });
+
+    if (test) {
+      btnStyle.visibility = 'visible'
+      spanStyle.visibility ='hidden'
+    } else {
+      btnStyle.visibility = 'hidden';
+      spanStyle.visibility = 'visible';
+    }
   }, [party]);
 
   return (
@@ -113,6 +121,10 @@ const App = () => {
         <div
           className='pokemon-party'
         >
+          <span
+            style={{ position: 'absolute' }}
+            ref={spanInfo}
+          >Your pokemon will show up here</span>
           <button
             style={{ visibility: 'hidden', margin: '10px', position: 'absolute', alignSelf: 'flex-start' }}
             onClick={onClickDeleteParty}
