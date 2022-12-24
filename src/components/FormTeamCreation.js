@@ -23,17 +23,20 @@ const FormTeamCreation = (props) => {
           value={'party-1'}
           onClick={() => getParties().then(res => setParty(res.parties['party-1']))}
         >
-          Party 1</option>
+          Party 1
+        </option>
         <option
           value={'party-2'}
           onClick={() => getParties().then(res => setParty(res.parties['party-2']))}
         >
-          Party 2</option>
+          Party 2
+        </option>
         <option
           value={'party-3'}
           onClick={() => getParties().then(res => setParty(res.parties['party-3']))}
         >
-          Party 3</option>
+          Party 3
+        </option>
       </select>
       <button
         type='button'
