@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { getParties, updateParty } from "../firebase.config";
 
 const FormTeamCreation = (props) => {
-  const { party, setParty } = props;
+  const { party, setParty, userSignedIn } = props;
 
   // Start ref variables
+  const formCreation = useRef();
   const selectTeam = useRef();
   const btnUpdate = useRef();
   // End ref variables
@@ -13,8 +14,20 @@ const FormTeamCreation = (props) => {
     updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value);
   };
 
+  useEffect(() => {
+    if (userSignedIn) {
+      getParties().then(res => setParty(res.parties['party-1']));
+      formCreation.current.style.visibility = 'visible';
+    } else if (!userSignedIn) {
+      formCreation.current.style.visibility = 'hidden';
+    }
+  }, [userSignedIn])
+
   return (
-    <form className='team-creation'>
+    <form
+      className='team-creation'
+      ref={formCreation}
+    >
       <select
         name='select-team'
         ref={selectTeam}

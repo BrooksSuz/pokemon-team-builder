@@ -1,13 +1,26 @@
+:root {
+  --main-color-one: #062F4F;
+  --main-color-two: #813772;
+  --main-color-three: #B82601;
+}
+
 .pokemon-container {
+  background-color: var(--main-color-one);
   display: flex;
   flex: 1;
 }
 
+.pokemon-container > div {
+  margin: 10px;
+}
+
 .pokemon-party {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  background-color: silver;
+  max-height: 40vh;
+  justify-content: center;
+  align-items: center;
+  flex: 2;
+  background-color: var(--main-color-three);
 }
 
 div[class^=party] {
@@ -15,18 +28,20 @@ div[class^=party] {
   min-width: 115px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
   flex: 1;
 }
 
 .pokemon-list {
+  font-size: 13px;
   display: flex;
+  max-height: 70vh;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  flex: 7;
-  background-color: gray;
+  align-self: center;
+  flex: 1;
+  background-color: var(--main-color-two);
 }
 
 label {
@@ -38,8 +53,7 @@ label {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  max-height: 500px;
-  max-width: 1174.5px;
+  max-height: 100%;
   overflow-y: scroll;
 }
 

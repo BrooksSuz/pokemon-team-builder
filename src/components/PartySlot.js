@@ -25,8 +25,8 @@ const PartySlot = (props) => {
         ? <img
             src={`${party[i].pokeSprite}`}
             alt={`Party slot number ${i + 1}`}
-            height='64px'
-            width='64px'
+            height='128px'
+            width='128px'
           />
         : null
       }

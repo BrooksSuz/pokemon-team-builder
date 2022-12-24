@@ -24,6 +24,7 @@ body {
 }
 
 header {
+  background-color: black;
   min-width: 100%;
   display: flex;
   flex-direction: column;
@@ -36,6 +37,7 @@ img, picture, svg, video {
 }
 
 footer {
+  background-color: black;
   min-width: 100%;
   display: flex;
   flex-direction: column;

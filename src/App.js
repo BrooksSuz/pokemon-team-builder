@@ -26,6 +26,7 @@ const App = () => {
   const formLogin = useRef();
   const formCreate = useRef();
   const btnHideComponents = useRef();
+  const btnDeleteAll = useRef();
   // End ref variables
 
   // Start functions
@@ -35,6 +36,13 @@ const App = () => {
     });
     setParty(arr);
   };
+
+  const changeDeleteVisibility = party.some(slot => {
+    for (const keys in slot) {
+      return slot[keys] === '' ? false : true;
+    }
+    return null;
+  });
 
   const changeDisplayForms = () => {
     const loginStyle = formLogin.current.style;
@@ -57,17 +65,17 @@ const App = () => {
     getPaldeaPokedex().then(res => setPokedex(res));
   }, []);
 
+  useEffect(() => {
+    const btnStyle = btnDeleteAll.current.style;
+    changeDeleteVisibility
+      ? btnStyle.visibility = 'visible'
+      : btnStyle.visibility = 'hidden';
+  }, [party]);
+
   return (
     <>
       <header>
         <h1>Pokemon Scarlet & Violet Team Builder</h1>
-        <p>This is a team builder for the newest Pokemon games.</p>
-        <button
-          style={{ alignSelf: 'flex-start' }}
-          onClick={onClickDeleteParty}
-          >
-            Delete Entire Party
-        </button>
         {
           !userSignedIn
             ?  <>
@@ -96,7 +104,6 @@ const App = () => {
                 setUserSignedIn={setUserSignedIn}
               />
         }
-        
       </header>
 
       {/* Start parent of pokemon-party & pokemon-list */}
@@ -108,6 +115,13 @@ const App = () => {
         <div
           className='pokemon-party'
         >
+          <button
+            style={{ visibility: 'hidden', margin: '10px', position: 'absolute', alignSelf: 'flex-start' }}
+            onClick={onClickDeleteParty}
+            ref={btnDeleteAll}
+          >
+            Delete Entire Party
+          </button>
           {
             Array.from(
               { length: 6 }, (_, i) => 
@@ -160,9 +174,9 @@ const App = () => {
           {/* End entry-container */}
 
           <FormTeamCreation
-            userSignedIn={userSignedIn}
             party={party}
             setParty={setParty}
+            userSignedIn={userSignedIn}
           />
 
         </div>
@@ -170,10 +184,6 @@ const App = () => {
 
       </div>
       {/* End parent of pokemon-party & pokemon-list */}
-        
-      <footer>
-        <span>This project was made by me :D</span>
-      </footer>
     </>
   );
 };
