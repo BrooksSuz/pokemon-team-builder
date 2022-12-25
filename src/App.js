@@ -148,6 +148,11 @@ const App = () => {
         <div
           className='pokemon-party container'
         >
+          <h2
+            style={{ position: 'absolute', alignSelf: 'flex-start' }}
+          >
+            Party Pokemon
+          </h2>
           <span
             style={{ position: 'absolute' }}
             ref={spanInfo}
@@ -182,6 +187,7 @@ const App = () => {
         <div
         className='pokemon-list container'
         >
+          <h2>Paldea Pokedex</h2>
           <label>
             Search Pokedex:
             <input
