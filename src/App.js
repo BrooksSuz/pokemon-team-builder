@@ -49,7 +49,7 @@ const App = () => {
     }
   };
 
-  const changeDisplayForms = () => {
+  const onClickChangeDisplayForms = () => {
     const loginStyle = formLogin.current.style;
     const createStyle = formCreate.current.style;
     const btnCurrent = btnHideComponents.current;
@@ -69,6 +69,14 @@ const App = () => {
   useEffect(() => {
     getPaldeaPokedex().then(res => setPokedex(res));
   }, []);
+
+  useEffect(() => {
+    const divStyle = divFormContainer.current.style;
+
+    if (userSignedIn) {
+      divStyle.display = 'none';
+    }
+  }, [userSignedIn]);
 
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
@@ -93,7 +101,16 @@ const App = () => {
     <>
       <header>
         <h1>Pokemon Scarlet & Violet Team Builder</h1>
-        <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
+        {
+          userSignedIn
+            ? <LoggedIn
+                setParty={setParty}
+                user={user}
+                setUser={setUser}
+                setUserSignedIn={setUserSignedIn}
+              />
+            : <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
+        }
       </header>
 
       {/* Start pokemon-container */}
@@ -102,38 +119,29 @@ const App = () => {
       >
 
       {/* Start FormLogin */}
-      {
-        !userSignedIn
-          ? <div
-            className='container form-container'
-            style={{ display: 'none' }}
-            ref={divFormContainer}
-          >
-              <FormLogin
-                setUser={setUser}
-                setUserSignedIn={setUserSignedIn}
-                ref={formLogin}
-              />
-              <FormCreateAccount
-                setUser={setUser}
-                setUserSignedIn={setUserSignedIn}
-                ref={formCreate}
-              />
-              <button
-                type='button'
-                onClick={changeDisplayForms}
-                ref={btnHideComponents}
-              >
-                Need an account?
-              </button>
-            </div>
-          : <LoggedIn
-              setParty={setParty}
-              user={user}
-              setUser={setUser}
-              setUserSignedIn={setUserSignedIn}
-            />
-      }
+      <div
+        className='container form-container'
+        style={{ display: 'none' }}
+        ref={divFormContainer}
+      >
+        <FormLogin
+          setUser={setUser}
+          setUserSignedIn={setUserSignedIn}
+          ref={formLogin}
+        />
+        <FormCreateAccount
+          setUser={setUser}
+          setUserSignedIn={setUserSignedIn}
+          ref={formCreate}
+        />
+        <button
+          type='button'
+          onClick={onClickChangeDisplayForms}
+          ref={btnHideComponents}
+        >
+          Need an account?
+        </button>
+      </div>
       {/* End FormLogin */}
 
         {/* Start pokemon-party */}
