@@ -82,44 +82,47 @@ const App = () => {
     <>
       <header>
         <h1>Pokemon Scarlet & Violet Team Builder</h1>
-        {
-          !userSignedIn
-            ?  <>
-                <FormLogin
-                  setUser={setUser}
-                  setUserSignedIn={setUserSignedIn}
-                  ref={formLogin}
-                />
-                <FormCreateAccount
-                  setUser={setUser}
-                  setUserSignedIn={setUserSignedIn}
-                  ref={formCreate}
-                />
-                <button
-                  type='button'
-                  onClick={changeDisplayForms}
-                  ref={btnHideComponents}
-                >
-                  Need an account?
-                </button>
-              </>
-            : <LoggedIn
-                setParty={setParty}
-                user={user}
-                setUser={setUser}
-                setUserSignedIn={setUserSignedIn}
-              />
-        }
       </header>
 
-      {/* Start parent of pokemon-party & pokemon-list */}
+      {/* Start pokemon-container */}
       <div
         className='pokemon-container'
       >
 
+      {/* Start FormLogin */}
+      {
+        !userSignedIn
+          ? <div className='container form-container'>
+              <FormLogin
+                setUser={setUser}
+                setUserSignedIn={setUserSignedIn}
+                ref={formLogin}
+              />
+              <FormCreateAccount
+                setUser={setUser}
+                setUserSignedIn={setUserSignedIn}
+                ref={formCreate}
+              />
+              <button
+                type='button'
+                onClick={changeDisplayForms}
+                ref={btnHideComponents}
+              >
+                Need an account?
+              </button>
+            </div>
+          : <LoggedIn
+              setParty={setParty}
+              user={user}
+              setUser={setUser}
+              setUserSignedIn={setUserSignedIn}
+            />
+      }
+      {/* End FormLogin */}
+
         {/* Start pokemon-party */}
         <div
-          className='pokemon-party'
+          className='pokemon-party container'
         >
           <span
             style={{ position: 'absolute' }}
@@ -153,7 +156,7 @@ const App = () => {
 
         {/* Start pokemon-list */}
         <div
-        className='pokemon-list'
+        className='pokemon-list container'
         >
           <label>
             Search Pokedex:
@@ -192,7 +195,7 @@ const App = () => {
         {/* End pokemon-list */}
 
       </div>
-      {/* End parent of pokemon-party & pokemon-list */}
+      {/* End pokemon-container */}
     </>
   );
 };
