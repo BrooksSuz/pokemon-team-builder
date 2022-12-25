@@ -23,6 +23,7 @@ const App = () => {
   // End state variables
   
   // Start ref 
+  const divFormContainer = useRef();
   const formLogin = useRef();
   const formCreate = useRef();
   const btnHideComponents = useRef();
@@ -36,6 +37,16 @@ const App = () => {
       return { pokeName: '', pokeSprite: '' };
     });
     setParty(arr);
+  };
+
+  const onClickDisplayLogin = (e) => {
+    const divStyle = divFormContainer.current.style;
+
+    if (divStyle.display === 'none') {
+      divStyle.display = 'block';
+    } else if (divStyle.display === 'block') {
+      divStyle.display = 'none';
+    }
   };
 
   const changeDisplayForms = () => {
@@ -82,6 +93,7 @@ const App = () => {
     <>
       <header>
         <h1>Pokemon Scarlet & Violet Team Builder</h1>
+        <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
       </header>
 
       {/* Start pokemon-container */}
@@ -92,7 +104,11 @@ const App = () => {
       {/* Start FormLogin */}
       {
         !userSignedIn
-          ? <div className='container form-container'>
+          ? <div
+            className='container form-container'
+            style={{ display: 'none' }}
+            ref={divFormContainer}
+          >
               <FormLogin
                 setUser={setUser}
                 setUserSignedIn={setUserSignedIn}
