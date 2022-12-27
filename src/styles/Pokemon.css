@@ -5,42 +5,64 @@
 }
 
 .pokemon-container {
+  height: 95%;
   position: relative;
   background-color: #666;
-  display: flex;
-  flex: 1;
+  display: grid;
+  grid-template-areas:
+    "pokemon-party  pokemon-list"
+    "type-chart     pokemon-list";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
 }
 
-.pokemon-container > div {
-  margin: 10px;
+.type-chart {
+  margin: 0 10px;
+  margin-bottom: 10px;
+  grid-area: type-chart;
+  display: flex;
 }
 
 .pokemon-party {
+  margin: 0 10px;
+  margin-top: 10px;
+  grid-area: pokemon-party;
   display: flex;
-  max-height: 40vh;
   justify-content: center;
   align-items: center;
-  flex: 2;
 }
 
 div[class^=party] {
-  min-height: 115px;
-  min-width: 115px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  min-height: 170px;
+  min-width: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
 }
 
+div[class^=party-1] {
+  border-left: none;
+}
+
+div[class^=party-6] {
+  border-right: none;
+}
+
 .pokemon-list {
+  margin: 10px 0;
+  margin-right: 10px;
+  min-width: 200px;
+  grid-area: pokemon-list;
   font-size: 13px;
   display: flex;
-  max-height: 70vh;
+  max-height: 100vh;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  align-self: center;
-  flex: 1;
+  overflow-y: hidden;
 }
 
 label {
@@ -52,7 +74,6 @@ label {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  max-height: 100%;
   overflow-y: scroll;
 }
 
@@ -63,7 +84,6 @@ label {
   align-items: center;
   min-height: 115px;
   min-width: 115px;
-  transition-duration: 0.1s;
 }
 
 .entry:hover {

@@ -5,6 +5,7 @@ import FormLogin from './components/FormLogin';
 import FormCreateAccount from './components/FormCreateAccount';
 import LoggedIn from './components/LoggedIn';
 import PokemonCard from './components/PokemonCard';
+import TypeChart from './components/TypeChart';
 import { getPaldeaPokedex } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
@@ -154,11 +155,13 @@ const App = () => {
             Party Pokemon
           </h2>
           <span
-            style={{ position: 'absolute' }}
+            style={{ position: 'absolute', alignSelf: 'flex-end' }}
             ref={spanInfo}
-          >Your pokemon will show up here</span>
+          >
+            Your pokemon will show up here
+          </span>
           <button
-            style={{ visibility: 'hidden', margin: '10px', position: 'absolute', alignSelf: 'flex-start' }}
+            style={{ visibility: 'hidden', margin: '20px', position: 'absolute', alignSelf: 'flex-start' }}
             onClick={onClickDeleteParty}
             ref={btnDeleteAll}
           >
@@ -223,6 +226,8 @@ const App = () => {
 
         </div>
         {/* End pokemon-list */}
+
+        <TypeChart />
 
       </div>
       {/* End pokemon-container */}
