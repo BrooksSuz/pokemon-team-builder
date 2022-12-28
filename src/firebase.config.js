@@ -33,13 +33,21 @@ const blankParty = Array.from({ length: 6 }, () => {
   return { pokeName: '', pokeSprite: '' };
 });
 
-// Function that gets pokedex information
+// Function that gets pokemon information
 const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokdexRef);
   if (mySnapshot.exists()) {
     return mySnapshot.data().paldea;
   }
 }; 
+
+// Function that gets pokemon type information
+const getPokemonTypes = async () => {
+  const mySnapshot = await getDoc(paldeaPokdexRef);
+  if (mySnapshot.exists()) {
+    return mySnapshot.data().types;
+  }
+};
 
 // Function that creates new user accounts
 const createAccount = async (email, pass) => {
@@ -107,6 +115,7 @@ const logout = async () => {
 
 export {
   getPaldeaPokedex,
+  getPokemonTypes,
   loginEmailPassword,
   createAccount,
   getParties,

@@ -6,7 +6,7 @@ import FormCreateAccount from './components/FormCreateAccount';
 import LoggedIn from './components/LoggedIn';
 import PokemonCard from './components/PokemonCard';
 import TypeChart from './components/TypeChart';
-import { getPaldeaPokedex } from "./firebase.config";
+import { getPaldeaPokedex, getPokemonTypes } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
 
@@ -17,7 +17,8 @@ const App = () => {
       return { pokeName: '', pokeSprite: '' };
     }
   ));
-  const [pokedex, setPokedex] = useState([]);
+  const [pokedex, setPokedex] = useState({ poke: [], types: [] });
+  const [types, setTypes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [user, setUser] = useState('');
   const [userSignedIn, setUserSignedIn] = useState(false);
@@ -40,7 +41,7 @@ const App = () => {
     setParty(arr);
   };
 
-  const onClickDisplayLogin = (e) => {
+  const onClickDisplayLogin = () => {
     const divStyle = divFormContainer.current.style;
 
     if (divStyle.display === 'none') {
@@ -65,11 +66,27 @@ const App = () => {
       btnCurrent.textContent = 'Need an account?';
     }
   };
+
+  const fillPokedex = async () => {
+    const copyPokedex = Object.assign({}, pokedex);
+    const paldeaPokedex = await getPaldeaPokedex();
+    const paldeaFlypes = await getPokemonTypes();
+
+    copyPokedex.poke = paldeaPokedex;
+    copyPokedex.types = paldeaFlypes;
+
+    setPokedex(copyPokedex);
+  };
   // End functions
 
   useEffect(() => {
-    getPaldeaPokedex().then(res => setPokedex(res));
+    fillPokedex();
   }, []);
+
+  /* useEffect(() => {
+    getPaldeaPokedex().then(res => setPokedex(res));
+    getPokemonTypes().then(res => setTypes(res));
+  }, []); */
 
   useEffect(() => {
     const divStyle = divFormContainer.current.style;
@@ -115,40 +132,36 @@ const App = () => {
       </header>
 
       {/* Start pokemon-container */}
-      <div
-        className='pokemon-container'
-      >
+      <div className='pokemon-container'>
 
-      {/* Start FormLogin */}
-      <div
-        className='container form-container'
-        style={{ display: 'none' }}
-        ref={divFormContainer}
-      >
-        <FormLogin
-          setUser={setUser}
-          setUserSignedIn={setUserSignedIn}
-          ref={formLogin}
-        />
-        <FormCreateAccount
-          setUser={setUser}
-          setUserSignedIn={setUserSignedIn}
-          ref={formCreate}
-        />
-        <button
-          type='button'
-          onClick={onClickChangeDisplayForms}
-          ref={btnHideComponents}
+        {/* Start FormLogin */}
+        <div
+          className='container form-container'
+          style={{ display: 'none' }}
+          ref={divFormContainer}
         >
-          Need an account?
-        </button>
-      </div>
-      {/* End FormLogin */}
+          <FormLogin
+            setUser={setUser}
+            setUserSignedIn={setUserSignedIn}
+            ref={formLogin}
+          />
+          <FormCreateAccount
+            setUser={setUser}
+            setUserSignedIn={setUserSignedIn}
+            ref={formCreate}
+          />
+          <button
+            type='button'
+            onClick={onClickChangeDisplayForms}
+            ref={btnHideComponents}
+          >
+            Need an account?
+          </button>
+        </div>
+        {/* End FormLogin */}
 
         {/* Start pokemon-party */}
-        <div
-          className='pokemon-party container'
-        >
+        <div className='pokemon-party container'>
           <h2
             style={{ position: 'absolute', alignSelf: 'flex-start' }}
           >
@@ -187,9 +200,7 @@ const App = () => {
         {/* End pokemon-party */}
 
         {/* Start pokemon-list */}
-        <div
-        className='pokemon-list container'
-        >
+        <div className='pokemon-list container'>
           <h2>Paldea Pokedex</h2>
           <label>
             Search Pokedex:
@@ -204,20 +215,21 @@ const App = () => {
           {/* Start entry-container */}
           <div className='entry-container'>
             {
-              pokedex
+              pokedex.poke
                 .filter(pokemon => {
                   return searchTerm === ''
                     ? pokemon
                     : pokemon.includes(searchTerm);
                 })
-                .map((pokemon, i) => (
+                .map((pokemon, index) => (
                 <PokemonCard
                   party={party}
                   setParty={setParty}
-                  pokedex={pokedex}
+                  poke={pokedex.poke}
                   pokemon={pokemon}
-                  i={i}
-                  key={i}
+                  types={pokedex.types}
+                  index={index}
+                  key={index}
                 />
               ))
             }

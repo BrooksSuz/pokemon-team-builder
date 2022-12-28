@@ -1,5 +1,5 @@
 const PokemonCard = (props) => {
-  const { party, setParty, pokedex, pokemon, i } = props;
+  const { party, setParty, poke, pokemon, types, index } = props;
 
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];
@@ -23,12 +23,12 @@ const PokemonCard = (props) => {
   return (
     <button
       className='entry'
-      key={i}
+      key={index}
       onClick={e => onClickAddPokemon(e.target.childNodes[2].textContent)}
     >
       <span>
         {
-          pokedex.findIndex(entry => {
+          poke.findIndex(entry => {
             return pokemon === entry
               ? true
               : false
@@ -37,18 +37,29 @@ const PokemonCard = (props) => {
       </span>
       <img
         src={`https://img.pokemondb.net/sprites/scarlet-violet/normal/${pokemon}.png`}
-        alt={`pokedex entry number ${i + 1}`} 
+        alt={`poke entry number ${index + 1}`} 
         height='64'
         width='64'
         style={{ marginBottom: '5px' }}
       />
       <span>
         {
-          pokemon.includes('-') && !(i > 391 && i < 396)
+          pokemon.includes('-') && !(index > 391 && index < 396)
             ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')
             : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
         }
       </span>
+      <br></br>
+      <span>
+          {
+            poke.map((p, i) => {
+              if (pokemon === p) {
+                return types[i];
+              }
+              return null;
+            })
+          }
+        </span>
     </button>
   );
 };
