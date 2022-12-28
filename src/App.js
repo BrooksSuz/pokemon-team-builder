@@ -18,7 +18,6 @@ const App = () => {
     }
   ));
   const [pokedex, setPokedex] = useState({ poke: [], types: [] });
-  const [types, setTypes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [user, setUser] = useState('');
   const [userSignedIn, setUserSignedIn] = useState(false);
@@ -82,11 +81,6 @@ const App = () => {
   useEffect(() => {
     fillPokedex();
   }, []);
-
-  /* useEffect(() => {
-    getPaldeaPokedex().then(res => setPokedex(res));
-    getPokemonTypes().then(res => setTypes(res));
-  }, []); */
 
   useEffect(() => {
     const divStyle = divFormContainer.current.style;
@@ -216,10 +210,10 @@ const App = () => {
           <div className='entry-container'>
             {
               pokedex.poke
-                .filter(pokemon => {
+                .filter((pokemon, i) => {
                   return searchTerm === ''
                     ? pokemon
-                    : pokemon.includes(searchTerm);
+                    : pokemon.includes(searchTerm) || pokedex.types[i].includes(searchTerm);
                 })
                 .map((pokemon, index) => (
                 <PokemonCard
