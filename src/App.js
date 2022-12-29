@@ -35,7 +35,7 @@ const App = () => {
   // Start functions
   const onClickDeleteParty = () => {
     const arr = Array.from({ length: 6 }, () => {
-      return { pokeName: '', pokeSprite: '' };
+      return { pokeName: '', pokeSprite: '', pokeType: '' };
     });
     setParty(arr);
   };

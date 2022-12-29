@@ -7,7 +7,7 @@ const LoggedIn = (props) => {
     setUser('');
     setUserSignedIn(false);
     setParty(Array.from({ length: 6 }, () => {
-      return { pokeName: '', pokeSprite: '' };
+      return { pokeName: '', pokeSprite: '', pokeType: '' };
     }));
     logout();
   };

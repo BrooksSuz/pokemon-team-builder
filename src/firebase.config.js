@@ -30,7 +30,7 @@ const firestore = getFirestore();
 const auth = getAuth(app);
 const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
 const blankParty = Array.from({ length: 6 }, () => {
-  return { pokeName: '', pokeSprite: '' };
+  return { pokeName: '', pokeSprite: '', pokeType: '' };
 });
 
 // Function that gets pokemon information

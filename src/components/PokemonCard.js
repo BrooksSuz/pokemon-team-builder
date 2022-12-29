@@ -10,7 +10,9 @@ const PokemonCard = (props) => {
 
     // Add name & sprite
     for (let i = 0; i < copyParty.length; i++) {
-      if (copyParty[i].pokeSprite === '' && copyParty[i].pokeName === '') {
+      if (copyParty[i].pokeSprite === ''
+          && copyParty[i].pokeName === ''
+          && copyParty[i].pokeType === '') {
         copyParty[i].pokeName = pokemon;
         copyParty[i].pokeSprite = `https://img.pokemondb.net/sprites/scarlet-violet/normal/${
           pokemon.includes(' ')

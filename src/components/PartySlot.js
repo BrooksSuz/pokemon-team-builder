@@ -9,7 +9,7 @@ const PartySlot = (props) => {
     const copyParty = [...party];
 
     if (divSlot.current.childNodes[1].textContent) {
-      copyParty[i] = { pokeName: '', pokeSprite: '' };
+      copyParty[i] = { pokeName: '', pokeSprite: '', pokeType: '' };
     }
 
     setParty(copyParty);
