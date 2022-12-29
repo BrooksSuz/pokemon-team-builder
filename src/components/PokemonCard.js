@@ -1,5 +1,9 @@
+import { useRef } from "react";
+
 const PokemonCard = (props) => {
   const { party, setParty, poke, pokemon, types, index } = props;
+
+  const spanType = useRef();
 
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];
@@ -13,6 +17,7 @@ const PokemonCard = (props) => {
             ? pokemon.charAt(0).toLowerCase() + pokemon.slice(1).replace(' ', '-')
             : pokemon.charAt(0).toLowerCase() + pokemon.slice(1)
         }.png`;
+        copyParty[i].pokeType = spanType.current.textContent;
         break;
       }
     }
@@ -50,7 +55,7 @@ const PokemonCard = (props) => {
         }
       </span>
       <br></br>
-      <span>
+      <span ref={spanType}>
           {
             poke.map((p, i) => {
               if (pokemon === p) {

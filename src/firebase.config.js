@@ -80,6 +80,7 @@ const loginEmailPassword = async (email, pass) => {
   }
 };
 
+// Function that gets user's parties
 const getParties = async () => {
   const userRef = doc(firestore, 'users', userUID);
   const docSnap = await getDoc(userRef);

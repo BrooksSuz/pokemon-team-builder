@@ -5,16 +5,16 @@ import FormLogin from './components/FormLogin';
 import FormCreateAccount from './components/FormCreateAccount';
 import LoggedIn from './components/LoggedIn';
 import PokemonCard from './components/PokemonCard';
-import TypeChart from './components/TypeChart';
 import { getPaldeaPokedex, getPokemonTypes } from "./firebase.config";
 import './styles/App.css';
 import './styles/Pokemon.css';
+import TypeChart from './components/TypeChart';
 
 const App = () => {
   // Start state variables
   const [party, setParty] = useState(
     Array.from({ length: 6 }, () => {
-      return { pokeName: '', pokeSprite: '' };
+      return { pokeName: '', pokeSprite: '', pokeType: '' };
     }
   ));
   const [pokedex, setPokedex] = useState({ poke: [], types: [] });
@@ -69,10 +69,10 @@ const App = () => {
   const fillPokedex = async () => {
     const copyPokedex = Object.assign({}, pokedex);
     const paldeaPokedex = await getPaldeaPokedex();
-    const paldeaFlypes = await getPokemonTypes();
+    const paldeaTypes = await getPokemonTypes();
 
     copyPokedex.poke = paldeaPokedex;
-    copyPokedex.types = paldeaFlypes;
+    copyPokedex.types = paldeaTypes;
 
     setPokedex(copyPokedex);
   };
@@ -100,14 +100,14 @@ const App = () => {
       return null;
     });
 
-    if (test) {
+    if (test || userSignedIn) {
       btnStyle.visibility = 'visible'
       spanStyle.visibility ='hidden'
     } else {
       btnStyle.visibility = 'hidden';
       spanStyle.visibility = 'visible';
     }
-  }, [party]);
+  }, [party, userSignedIn]);
 
   return (
     <>
@@ -233,7 +233,7 @@ const App = () => {
         </div>
         {/* End pokemon-list */}
 
-        <TypeChart />
+        <TypeChart party={party} />
 
       </div>
       {/* End pokemon-container */}

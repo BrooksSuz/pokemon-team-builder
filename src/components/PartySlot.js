@@ -22,13 +22,13 @@ const PartySlot = (props) => {
     >
       {
         party[i].pokeSprite
-        ? <img
-            src={`${party[i].pokeSprite}`}
-            alt={`Party slot number ${i + 1}`}
-            height='128px'
-            width='128px'
-          />
-        : null
+          ? <img
+              src={`${party[i].pokeSprite}`}
+              alt={`Party slot number ${i + 1}`}
+              height='128px'
+              width='128px'
+            />
+          : null
       }
       <span>{party[i].pokeName}</span>
       {
