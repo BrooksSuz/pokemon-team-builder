@@ -52,7 +52,7 @@ const PokemonCard = (props) => {
       <span>
         {
           pokemon.includes('-') && !(index > 391 && index < 396)
-            ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')
+            ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')/* THIS WORKS FOR DISPLAYING A CAPITAL LETTER, DOES NOT WORK FOR APPLYING POKESPRITE INTO PARTYSLOT .replace(`${pokemon[pokemon.indexOf('-') + 1]}`, `${pokemon[pokemon.indexOf('-') + 1].toUpperCase()}`) */
             : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
         }
       </span>

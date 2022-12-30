@@ -23,7 +23,7 @@ const App = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
   // End state variables
   
-  // Start ref 
+  // Start ref variables
   const divFormContainer = useRef();
   const formLogin = useRef();
   const formCreate = useRef();
@@ -123,6 +123,12 @@ const App = () => {
               />
             : <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
         }
+        {/* TODO: Add this to the logic above instead of relying on inner logic to show/hide */}
+        <FormTeamCreation
+          party={party}
+          setParty={setParty}
+          userSignedIn={userSignedIn}
+        />
       </header>
 
       {/* Start pokemon-container */}
@@ -156,17 +162,10 @@ const App = () => {
 
         {/* Start pokemon-party */}
         <div className='pokemon-party container'>
-          <h2
-            style={{ position: 'absolute', alignSelf: 'flex-start' }}
-          >
-            Party Pokemon
-          </h2>
-          <span
-            style={{ position: 'absolute', alignSelf: 'flex-end' }}
-            ref={spanInfo}
-          >
-            Your pokemon will show up here
-          </span>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', alignSelf: 'flex-start', alignItems: 'center' }}>
+            <h2>Party Pokemon</h2>
+            <span ref={spanInfo}>Your pokemon will show up here</span>
+          </div>
           <button
             style={{ visibility: 'hidden', margin: '20px', position: 'absolute', alignSelf: 'flex-start' }}
             onClick={onClickDeleteParty}
@@ -185,11 +184,6 @@ const App = () => {
               />
             )
           }
-          <FormTeamCreation
-            party={party}
-            setParty={setParty}
-            userSignedIn={userSignedIn}
-          />
         </div>
         {/* End pokemon-party */}
 

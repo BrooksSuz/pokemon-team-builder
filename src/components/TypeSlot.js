@@ -94,67 +94,70 @@ const pokemonTypes = {
 };
 
 const TypeSlot = (props) => {
-  const { party, i } = props;
-  const [strong, setStrong] = useState([]);
-  const [weak, setWeak] = useState([]);
+  const { party, index } = props;
+  const [superEffective, setSuperEffective] = useState([]);
+  const [notEffective, setNotEffective] = useState([]);
+  const [noEffect, setNoEffect] = useState([]);
 
   const calculateTypeMatchups = str => {
-    let strong = [];
-    let weak = [];
+    let superEffective = [];
+    let notEffective = [];
+    let noEffect =[];
     
     if (str.includes('/')) {
       const arr = str.slice().split('/');
       const type1 = arr[0];
       const type2 = arr[1];
 
-      strong = strong.concat(pokemonTypes[type2].superEffective);
-      weak = weak.concat(pokemonTypes[type2].notEffective);
+      superEffective = superEffective.concat(pokemonTypes[type2].superEffective);
+      notEffective = notEffective.concat(pokemonTypes[type2].notEffective);
+      noEffect = noEffect.concat(pokemonTypes[type2].noEffect);
 
-      strong = strong.concat(pokemonTypes[type1].superEffective);
-      weak = weak.concat(pokemonTypes[type1].notEffective);
+      superEffective = superEffective.concat(pokemonTypes[type1].superEffective);
+      notEffective = notEffective.concat(pokemonTypes[type1].notEffective);
+      noEffect = noEffect.concat(pokemonTypes[type1].noEffect);
 
-      strong = [...new Set(strong)];
-      weak = [...new Set(weak)];
+      superEffective = [...new Set(superEffective)];
+      notEffective = [...new Set(notEffective)];
+      noEffect = [...new Set(noEffect)];
 
-      setStrong(strong);
-      setWeak(weak);
+      setSuperEffective(superEffective);
+      setNotEffective(notEffective);
+      setNoEffect(noEffect);
     } else {
-      strong = strong.concat(pokemonTypes[str].superEffective);
-      weak = weak.concat(pokemonTypes[str].notEffective);
+      superEffective = superEffective.concat(pokemonTypes[str].superEffective);
+      notEffective = notEffective.concat(pokemonTypes[str].notEffective);
+      noEffect = noEffect.concat(pokemonTypes[str].noEffect);
   
-      strong = [...new Set(strong)];
-      weak = [...new Set(weak)];
+      superEffective = [...new Set(superEffective)];
+      notEffective = [...new Set(notEffective)];
+      noEffect = [...new Set(noEffect)];
   
-      setStrong(strong);
-      setWeak(weak);
+      setSuperEffective(superEffective);
+      setNotEffective(notEffective);
+      setNoEffect(noEffect);
     }
   };
 
   useEffect((prevParty) => {
-    if (prevParty !== party && party[i].pokeType) {
-      calculateTypeMatchups(party[i].pokeType);
+    if (prevParty !== party && party[index].pokeType) {
+      calculateTypeMatchups(party[index].pokeType);
     }
-  }, [i, party]);
+  }, [index, party]);
 
-
-  //TODO: Update strong/weak so they don't linger on the screen
   return (
-    <ul className={`type-slot-${i + 1}`}>
+    <ul className={`type-slot-${index + 1}`}>
       {
-        party[i].pokeType
+        party[index].pokeType
           ? <>
-              <li>
-                <h3>Type:</h3>
-                <p>{party[i].pokeType}</p>
-              </li>
-              <li>
-                <h3>Super Effective Against:</h3>
-                <p>{strong.join(', ')}</p>
-              </li>
-              <li>
-                <h3>Not Effective:</h3>
-                <p>{weak.join(', ')}</p>
-              </li>
+              <li><h3>Type</h3></li>
+              <li><p>{party[index].pokeType}</p></li>
+              <li><h3>Super Effective Against</h3></li>
+              <li>{superEffective.map((type, j) => <p key={j}>{type}</p>)}</li>
+              <li><h3>Not Effective</h3></li>
+              <li>{notEffective.map((type, j) => <p key ={j}>{type}</p>)}</li>
+              <li><h3>No Effect</h3></li>
+              <li>{noEffect.map((type, j) => <p key={j}>{type}</p>)}</li>
             </>
           : null
       }

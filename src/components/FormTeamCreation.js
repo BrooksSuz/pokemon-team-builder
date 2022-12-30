@@ -54,7 +54,7 @@ const FormTeamCreation = (props) => {
       </select>
       <button
         type='button'
-        style={{ margin: '10px' }}
+        style={{ margin: '1px' }}
         onClick={updatePaldeaParty}
         ref={btnSave}
       >

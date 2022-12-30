@@ -6,8 +6,7 @@
 }
 
 .pokemon-container {
-  height: 95%;
-  position: relative;
+  height: 90%;
   background-color: #666;
   display: grid;
   grid-template-areas:
@@ -24,7 +23,7 @@
   grid-area: type-chart;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .pokemon-party {
@@ -33,7 +32,7 @@
   grid-area: pokemon-party;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 div[class^=party] {
@@ -91,21 +90,19 @@ label {
 
 .entry:hover {
   background-color: black;
+  border-radius: 5px;
 }
 
 ul[class^=type-slot] {
+  font-size: 14px;
   border-left: 1px solid white;
   border-right: 1px solid white;
-  height: 425px;
+  min-height: 400px;
   min-width: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   flex: 1;
-}
-
-ul {
   list-style: none;
 }
 
@@ -115,6 +112,15 @@ ul[class^=type-slot-1] {
 
 ul[class^=type-slot-6] {
   border-right: none;
+}
+
+li {
+  margin-top: 1px;
+}
+
+li h3 {
+  border-bottom: 1px solid white;
+  margin-top: 5px;
 }
 
 img {
