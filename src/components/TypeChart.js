@@ -7,7 +7,7 @@ const TypeChart = (props) => {
 
   return (
     <div className='container type-chart'>
-      <h2>Type Chart</h2>
+      <h2 style={{ position: 'absolute', alignSelf: 'flex-start' }}>Type Chart</h2>
       {
         Array.from(
           { length: 6 }, (_, i) => 

@@ -24,6 +24,7 @@
   grid-area: type-chart;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .pokemon-party {
@@ -90,6 +91,30 @@ label {
 
 .entry:hover {
   background-color: black;
+}
+
+ul[class^=type-slot] {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  height: 425px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+}
+
+ul {
+  list-style: none;
+}
+
+ul[class^=type-slot-1] {
+  border-left: none;
+}
+
+ul[class^=type-slot-6] {
+  border-right: none;
 }
 
 img {

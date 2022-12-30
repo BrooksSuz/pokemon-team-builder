@@ -3,92 +3,92 @@ import { useState, useEffect } from "react";
 // Type match-up data
 const pokemonTypes = {
   normal: {
-    immune: ['ghost'],
-    resists: ['rock', 'steel'],
+    noEffect: ['ghost'],
+    notEffective: ['rock', 'steel'],
     superEffective: []
   },
   fire: {
-    immune: [],
-    resists: ['fire', 'water', 'rock', 'dragon'],
+    noEffect: [],
+    notEffective: ['fire', 'water', 'rock', 'dragon'],
     superEffective: ['grass', 'ice', 'bug', 'steel']
   },
   water: {
-    immune: [],
-    resists: ['water', 'grass', 'dragon'],
+    noEffect: [],
+    notEffective: ['water', 'grass', 'dragon'],
     superEffective: ['fire', 'ground', 'rock']
   },
   electric: {
-    immune: [],
-    resists: ['electric', 'grass', 'dragon'],
+    noEffect: [],
+    notEffective: ['electric', 'grass', 'dragon'],
     superEffective: ['water', 'flying']
   },
   grass: {
-    immune: [],
-    resists: ['fire', 'grass', 'poison', 'flying', 'bug', 'dragon', 'steel'],
+    noEffect: [],
+    notEffective: ['fire', 'grass', 'poison', 'flying', 'bug', 'dragon', 'steel'],
     superEffective: ['water', 'ground', 'rock']
   },
   ice: {
-    immune: [],
-    resists: ['fire', 'water', 'ice', 'steel'],
+    noEffect: [],
+    notEffective: ['fire', 'water', 'ice', 'steel'],
     superEffective: ['grass', 'ground', 'flying', 'dragon']
   },
   fighting: {
-    resists: ['poison', 'flying', 'psychic', 'bug', 'fairy'],
+    notEffective: ['poison', 'flying', 'psychic', 'bug', 'fairy'],
     superEffective: ['normal', 'ice', 'rock', 'dark', 'steel']
   },
   poison: {
-    immune: [],
-    resists: ['poison', 'ground', 'rock', 'ghost'],
+    noEffect: [],
+    notEffective: ['poison', 'ground', 'rock', 'ghost'],
     superEffective: ['grass', 'fairy']
   },
   ground: {
-    immune: ['electric'],
-    resists: ['grass', 'bug'],
+    noEffect: ['electric'],
+    notEffective: ['grass', 'bug'],
     superEffective: ['fire', 'electric', 'poison', 'rock', 'steel']
   },
   flying: {
-    immune: ['ground'],
-    resists: ['electric', 'rock', 'steel'],
+    noEffect: ['ground'],
+    notEffective: ['electric', 'rock', 'steel'],
     superEffective: ['grass', 'fighting', 'bug']
   },
   psychic: {
-    immune: [],
-    resists: ['psychic', 'steel'],
+    noEffect: [],
+    notEffective: ['psychic', 'steel'],
     superEffective: ['fighting', 'poison']
   },
   bug: {
-    immune: [],
-    resists: ['fire', 'fighting', 'poison', 'flying', 'ghost', 'steel', 'fairy'],
+    noEffect: [],
+    notEffective: ['fire', 'fighting', 'poison', 'flying', 'ghost', 'steel', 'fairy'],
     superEffective: ['grass', 'psychic', 'dark']
   },
   rock: {
-    immune: [],
-    resists: ['fighting', 'ground', 'steel'],
+    noEffect: [],
+    notEffective: ['fighting', 'ground', 'steel'],
     superEffective: ['fire', 'ice', 'flying', 'bug']
   },
   ghost: {
-    immune: ['normal', 'fighting'],
-    resists: ['dark'],
+    noEffect: ['normal', 'fighting'],
+    notEffective: ['dark'],
     superEffective: ['psychic', 'ghost']
   },
   dragon: {
-    immune: [],
-    resists: ['steel'],
+    noEffect: [],
+    notEffective: ['steel'],
     superEffective: ['dragon']
   },
   dark: {
-    immune: ['psychic'],
-    resists: ['fighting', 'dark', 'fairy'],
+    noEffect: ['psychic'],
+    notEffective: ['fighting', 'dark', 'fairy'],
     superEffective: ['psychic', 'ghost']
   },
   steel: {
-    immune: ['poison'],
-    resists: ['fire', 'water', 'electric', 'steel'],
+    noEffect: ['poison'],
+    notEffective: ['fire', 'water', 'electric', 'steel'],
     superEffective: ['ice', 'rock', 'fairy']
   },
   fairy: {
-    immune: ['dragon'],
-    resists: ['fire', 'poison', 'steel'],
+    noEffect: ['dragon'],
+    notEffective: ['fire', 'poison', 'steel'],
     superEffective: ['fighting', 'dragon', 'dark']
   }
 };
@@ -108,10 +108,10 @@ const TypeSlot = (props) => {
       const type2 = arr[1];
 
       strong = strong.concat(pokemonTypes[type2].superEffective);
-      weak = weak.concat(pokemonTypes[type2].resists);
+      weak = weak.concat(pokemonTypes[type2].notEffective);
 
       strong = strong.concat(pokemonTypes[type1].superEffective);
-      weak = weak.concat(pokemonTypes[type1].resists);
+      weak = weak.concat(pokemonTypes[type1].notEffective);
 
       strong = [...new Set(strong)];
       weak = [...new Set(weak)];
@@ -120,7 +120,7 @@ const TypeSlot = (props) => {
       setWeak(weak);
     } else {
       strong = strong.concat(pokemonTypes[str].superEffective);
-      weak = weak.concat(pokemonTypes[str].resists);
+      weak = weak.concat(pokemonTypes[str].notEffective);
   
       strong = [...new Set(strong)];
       weak = [...new Set(weak)];
@@ -136,26 +136,29 @@ const TypeSlot = (props) => {
     }
   }, [i, party]);
 
+
+  //TODO: Update strong/weak so they don't linger on the screen
   return (
-    <div>
-      <p>
-        {
-          party[i].pokeType
-            ? party[i].pokeType
-            : null
-        }
-      </p>
-      <p>
-        {
-          strong
-        }
-      </p>
-      <p>
-        {
-          weak
-        }
-        </p>
-    </div>
+    <ul className={`type-slot-${i + 1}`}>
+      {
+        party[i].pokeType
+          ? <>
+              <li>
+                <h3>Type:</h3>
+                <p>{party[i].pokeType}</p>
+              </li>
+              <li>
+                <h3>Super Effective Against:</h3>
+                <p>{strong.join(', ')}</p>
+              </li>
+              <li>
+                <h3>Not Effective:</h3>
+                <p>{weak.join(', ')}</p>
+              </li>
+            </>
+          : null
+      }
+    </ul>
   );
 };
 
