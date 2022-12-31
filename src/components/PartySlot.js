@@ -21,24 +21,24 @@ const PartySlot = (props) => {
       ref={divSlot}
     >
       {
-        party[index].pokeSprite
-          ? <img
-              src={`${party[index].pokeSprite}`}
-              alt={`Party slot number ${index + 1}`}
-              height='128px'
-              width='128px'
-            />
-          : null
-      }
-      <span>{party[index].pokeName}</span>
-      {
         party[index].pokeName
-          ? <button
-              onClick={onClickDeleteSlot}
-              ref={btnDelete}
-            >
-              Delete Pokemon
-            </button>
+        && party[index].pokeSprite
+        && party[index].pokeType
+          ? <>
+              <img
+                src={`${party[index].pokeSprite}`}
+                alt={`Party slot number ${index + 1}`}
+                height='128px'
+                width='128px'
+              />
+              <span>{party[index].pokeName}</span>
+              <button 
+                onClick={onClickDeleteSlot}
+                ref={btnDelete}
+              >
+                Delete Pokemon
+              </button>
+            </>
           : null
       }
     </div>
