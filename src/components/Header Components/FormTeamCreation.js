@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { getParties, updateParty } from "../firebase.config";
+import { getParties, updateParty } from "../../firebase.config";
 
 const FormTeamCreation = (props) => {
   const { party, setParty, userSignedIn } = props;

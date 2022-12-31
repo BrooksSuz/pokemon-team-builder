@@ -1,11 +1,18 @@
 import { useEffect, useRef } from "react";
-import LoggedIn from "./LoggedIn";
-import FormTeamCreation from "./FormTeamCreation";
-import FormLogin from "./FormLogin";
-import FormCreateAccount from "./FormCreateAccount";
+import LoggedIn from "./Header Components/LoggedIn";
+import FormTeamCreation from "./Header Components/FormTeamCreation";
+import FormLogin from "./Header Components/FormLogin";
+import FormCreateAccount from "./Header Components/FormCreateAccount";
 
 const Header = (props) => {
-  const {party, setParty, user, setUser, userSignedIn, setUserSignedIn} = props;
+  const {
+    party,
+    setParty,
+    user,
+    setUser,
+    userSignedIn,
+    setUserSignedIn
+  } = props;
 
   const divFormContainer = useRef();
   const formLogin = useRef();

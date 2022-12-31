@@ -1,5 +1,5 @@
 import { useRef, forwardRef } from "react";
-import { loginEmailPassword } from "../firebase.config";
+import { loginEmailPassword } from "../../firebase.config";
 
 const FormLogin = forwardRef((props, ref) => {
   const { setUser, setUserSignedIn } = props;

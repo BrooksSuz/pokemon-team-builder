@@ -27,7 +27,7 @@ body {
     "pokemon-party  pokemon-list"
     "type-chart     pokemon-list";
   grid-template-columns: 6fr 1fr;
-  grid-template-rows: 1fr 2fr 4fr;
+  grid-template-rows: 1fr 4fr 8fr;
   gap: 5px;
 }
 

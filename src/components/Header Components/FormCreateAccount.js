@@ -1,5 +1,5 @@
 import { useRef, forwardRef } from "react";
-import { createAccount } from "../firebase.config";
+import { createAccount } from "../../firebase.config";
 
 const FormCreateAccount = forwardRef((props, ref) => {
   const { setUser, setUserSignedIn } = props;

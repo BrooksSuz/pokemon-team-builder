@@ -1,4 +1,4 @@
-import TypeSlot from "./TypeSlot";
+import TypeSlot from "./TypeChart components/TypeSlot";
 
 const TypeChart = (props) => {
   const { party } = props;

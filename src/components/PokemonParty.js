@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import PartySlot from './PartySlot';
+import PartySlot from './PokemonParty components/PartySlot';
 import '../styles/Pokemon.css';
 
 const PokemonParty = (props) => {
