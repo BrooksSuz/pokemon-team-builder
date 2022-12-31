@@ -47,7 +47,7 @@ const Header = (props) => {
   }, [userSignedIn]);
 
   return (
-    <header>
+    <header className='container'>
       <h1>Pokemon Scarlet & Violet Team Builder</h1>
       {
         userSignedIn

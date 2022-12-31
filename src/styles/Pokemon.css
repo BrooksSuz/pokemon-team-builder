@@ -6,8 +6,8 @@
 }
 
 .type-chart {
-  margin: 0 10px;
-  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
   grid-area: type-chart;
   display: flex;
   justify-content: center;
@@ -15,8 +15,7 @@
 }
 
 .pokemon-party {
-  margin: 0 10px;
-  margin-top: 10px;
+  margin-left: 5px;
   grid-area: pokemon-party;
   display: flex;
   justify-content: center;
@@ -43,8 +42,8 @@ div[class^=party-6] {
 }
 
 .pokemon-list {
-  margin: 10px 0;
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   min-width: 200px;
   grid-area: pokemon-list;
   font-size: 13px;
