@@ -36,7 +36,7 @@ const PokemonParty = (props) => {
 
   return (
     <div className='pokemon-party container'>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', alignSelf: 'flex-start', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', alignSelf: 'flex-start' }}>
         <h2>Party Pokemon</h2>
         <span ref={spanInfo}>Your pokemon will show up here</span>
       </div>
@@ -49,12 +49,12 @@ const PokemonParty = (props) => {
       </button>
       {
         Array.from(
-          { length: 6 }, (_, i) => 
+          { length: 6 }, (_, index) => 
           <PartySlot
             party={party}
             setParty={setParty}
-            i={i}
-            key={i}
+            index={index}
+            key={index}
           />
         )
       }

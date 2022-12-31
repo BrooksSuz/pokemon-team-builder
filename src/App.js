@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import PokemonParty from './components/PokemonParty';
 import './styles/App.css';
@@ -27,20 +27,18 @@ const App = () => {
         userSignedIn={userSignedIn}
         setUserSignedIn={setUserSignedIn}
       />
-      <div className='pokemon-container'>
-        <PokemonParty
-          party={party}
-          setParty={setParty}
-          userSignedIn={userSignedIn}
-        />
-        <PaldeaPokedex
-          party={party}
-          setParty={setParty}
-        />
-        <TypeChart
-          party={party}
-        />
-      </div>
+      <PokemonParty
+        party={party}
+        setParty={setParty}
+        userSignedIn={userSignedIn}
+      />
+      <PaldeaPokedex
+        party={party}
+        setParty={setParty}
+      />
+      <TypeChart
+        party={party}
+      />
     </>
   );
 };

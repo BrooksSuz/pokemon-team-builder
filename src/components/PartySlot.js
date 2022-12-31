@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 const PartySlot = (props) => {
-  const { party, setParty, i } = props;
+  const { party, setParty, index } = props;
   const divSlot = useRef();
   const btnDelete = useRef();
 
@@ -9,7 +9,7 @@ const PartySlot = (props) => {
     const copyParty = [...party];
 
     if (divSlot.current.childNodes[1].textContent) {
-      copyParty[i] = { pokeName: '', pokeSprite: '', pokeType: '' };
+      copyParty[index] = { pokeName: '', pokeSprite: '', pokeType: '' };
     }
 
     setParty(copyParty);
@@ -17,22 +17,22 @@ const PartySlot = (props) => {
 
   return (
     <div
-      className={`party-${i + 1}`}
+      className={`party-${index + 1}`}
       ref={divSlot}
     >
       {
-        party[i].pokeSprite
+        party[index].pokeSprite
           ? <img
-              src={`${party[i].pokeSprite}`}
-              alt={`Party slot number ${i + 1}`}
+              src={`${party[index].pokeSprite}`}
+              alt={`Party slot number ${index + 1}`}
               height='128px'
               width='128px'
             />
           : null
       }
-      <span>{party[i].pokeName}</span>
+      <span>{party[index].pokeName}</span>
       {
-        party[i].pokeName
+        party[index].pokeName
           ? <button
               onClick={onClickDeleteSlot}
               ref={btnDelete}
