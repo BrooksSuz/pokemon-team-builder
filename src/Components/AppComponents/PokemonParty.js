@@ -37,7 +37,7 @@ const PokemonParty = (props) => {
   return (
     <div className='pokemon-party container'>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', alignSelf: 'flex-start' }}>
-        <h2>Party Pokemon</h2>
+        <h2>Pokemon Party</h2>
         <span ref={spanInfo}>Your pokemon will show up here</span>
       </div>
       <button

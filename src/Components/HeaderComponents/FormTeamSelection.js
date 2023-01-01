@@ -1,14 +1,12 @@
 import { useEffect, useRef } from "react";
 import { getParties, updateParty } from "../../firebase.config";
 
-const FormTeamCreation = (props) => {
+const FormTeamSelection = (props) => {
   const { party, setParty, userSignedIn } = props;
 
-  // Start ref variables
   const formCreation = useRef();
   const selectTeam = useRef();
   const btnSave = useRef();
-  // End ref variables
 
   const updatePaldeaParty = () => {
     updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value);
@@ -17,9 +15,6 @@ const FormTeamCreation = (props) => {
   useEffect(() => {
     if (userSignedIn) {
       getParties().then(res => setParty(res.parties['party-1']));
-      formCreation.current.style.visibility = 'visible';
-    } else if (!userSignedIn) {
-      formCreation.current.style.visibility = 'hidden';
     }
   }, [userSignedIn])
 
@@ -64,4 +59,4 @@ const FormTeamCreation = (props) => {
   );
 };
 
-export default FormTeamCreation;
+export default FormTeamSelection;

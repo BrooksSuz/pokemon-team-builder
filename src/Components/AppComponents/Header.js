@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import LoggedIn from '../HeaderComponents/Logout';
-import FormTeamCreation from "../HeaderComponents/FormTeamCreation";
+import Logout from '../HeaderComponents/Logout';
+import FormTeamSelection from "../HeaderComponents/FormTeamSelection";
 import FormLogin from "../HeaderComponents/FormLogin";
 import FormCreateAccount from "../HeaderComponents/FormCreateAccount";
 
@@ -58,20 +58,21 @@ const Header = (props) => {
       <h1>Pokemon Scarlet & Violet Team Builder</h1>
       {
         userSignedIn
-          ? <LoggedIn
-              setParty={setParty}
-              user={user}
-              setUser={setUser}
-              setUserSignedIn={setUserSignedIn}
-            />
+          ? <>
+              <Logout
+                setParty={setParty}
+                user={user}
+                setUser={setUser}
+                setUserSignedIn={setUserSignedIn}
+              />
+              <FormTeamSelection
+                party={party}
+                setParty={setParty}
+                userSignedIn={userSignedIn}
+              />
+            </>
           : <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
       }
-      {/* TODO: Add this to the logic above instead of relying on inner logic to show/hide */}
-      <FormTeamCreation
-        party={party}
-        setParty={setParty}
-        userSignedIn={userSignedIn}
-      />
       <div
         className='container form-container'
         style={{ display: 'none' }}
