@@ -1,0 +1,34 @@
+.type-chart {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  grid-area: type-chart;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+ul[class^=type-slot] {
+  font-size: 14px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  min-height: 400px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  list-style: none;
+}
+
+ul[class^=type-slot-1] {
+  border-left: none;
+}
+
+ul[class^=type-slot-6] {
+  border-right: none;
+}
+
+li h3 {
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+}
