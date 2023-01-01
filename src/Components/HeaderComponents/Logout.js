@@ -1,6 +1,6 @@
 import { logout } from "../../firebase.config";
 
-const LoggedIn = (props) => {
+const Logout = (props) => {
   const { setParty, user, setUser, setUserSignedIn } = props;
 
   const logoutPaldea = () => {
@@ -25,4 +25,4 @@ const LoggedIn = (props) => {
   );
 };
 
-export default LoggedIn;
+export default Logout;

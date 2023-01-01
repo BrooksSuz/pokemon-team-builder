@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import LoggedIn from '../HeaderComponents/LoggedIn';
+import LoggedIn from '../HeaderComponents/Logout';
 import FormTeamCreation from "../HeaderComponents/FormTeamCreation";
 import FormLogin from "../HeaderComponents/FormLogin";
 import FormCreateAccount from "../HeaderComponents/FormCreateAccount";
