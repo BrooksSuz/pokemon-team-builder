@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Header from './Header';
-import PokemonParty from './PokemonParty';
-import PaldeaPokedex from './PaldeaPokedex';
-import TypeChart from './TypeChart';
+import Header from './AppComponents/Header';
+import PokemonParty from './AppComponents/PokemonParty';
+import PaldeaPokedex from './AppComponents/PaldeaPokedex';
+import TypeChart from './AppComponents/TypeChart';
 import '../styles/Reset.css';
 import '../styles/App.css';
 
