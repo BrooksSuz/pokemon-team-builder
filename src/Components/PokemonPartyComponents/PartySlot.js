@@ -28,8 +28,6 @@ const PartySlot = (props) => {
               <img
                 src={`${party[index].pokeSprite}`}
                 alt={`Party slot number ${index + 1}`}
-                height='128px'
-                width='128px'
               />
               <span>{party[index].pokeName}</span>
               <button 

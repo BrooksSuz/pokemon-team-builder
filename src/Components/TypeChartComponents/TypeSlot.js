@@ -109,13 +109,13 @@ const TypeSlot = (props) => {
       const type1 = arr[0];
       const type2 = arr[1];
 
-      superEffective = superEffective.concat(pokemonTypes[type2].superEffective);
-      notEffective = notEffective.concat(pokemonTypes[type2].notEffective);
-      noEffect = noEffect.concat(pokemonTypes[type2].noEffect);
-
       superEffective = superEffective.concat(pokemonTypes[type1].superEffective);
       notEffective = notEffective.concat(pokemonTypes[type1].notEffective);
       noEffect = noEffect.concat(pokemonTypes[type1].noEffect);
+
+      superEffective = superEffective.concat(pokemonTypes[type2].superEffective);
+      notEffective = notEffective.concat(pokemonTypes[type2].notEffective);
+      noEffect = noEffect.concat(pokemonTypes[type2].noEffect);
 
       superEffective = [...new Set(superEffective)];
       notEffective = [...new Set(notEffective)];
@@ -146,22 +146,22 @@ const TypeSlot = (props) => {
   }, [index, party]);
 
   return (
-    <ul className={`type-slot-${index + 1}`}>
+    <div className={`type-slot-${index + 1}`}>
       {
         party[index].pokeType
           ? <>
-              <li><h3>Type</h3></li>
-              <li><p>{party[index].pokeType}</p></li>
-              <li><h3>Super Effective Against</h3></li>
-              <li>{superEffective.map((type, j) => <p key={j}>{type}</p>)}</li>
-              <li><h3>Not Effective</h3></li>
-              <li>{notEffective.map((type, j) => <p key ={j}>{type}</p>)}</li>
-              <li><h3>No Effect</h3></li>
-              <li>{noEffect.map((type, j) => <p key={j}>{type}</p>)}</li>
+              <h3>Type</h3>
+              <p>{party[index].pokeType}</p>
+              <h3>Super Effective Against</h3>
+              {superEffective.map((type, j) => <p key={j}>{type}</p>)}
+              <h3>Not Effective</h3>
+              {notEffective.map((type, j) => <p key ={j}>{type}</p>)}
+              <h3>No Effect</h3>
+              {noEffect.map((type, j) => <p key={j}>{type}</p>)}
             </>
           : null
       }
-    </ul>
+    </div>
   );
 };
 

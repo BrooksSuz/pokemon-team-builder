@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 const PokemonCard = (props) => {
-  const { party, setParty, poke, pokemon, types, index } = props;
+  const { pokemon, party, setParty, pokedexPokemon, pokedexTypes, index } = props;
 
   const spanType = useRef();
 
@@ -35,19 +35,14 @@ const PokemonCard = (props) => {
     >
       <span>
         {
-          poke.findIndex(entry => {
-            return pokemon === entry
-              ? true
-              : false
-          }) + 1
+          pokedexPokemon.findIndex(entry => pokemon === entry) + 1
         }
       </span>
       <img
         src={`https://img.pokemondb.net/sprites/scarlet-violet/normal/${pokemon}.png`}
-        alt={`poke entry number ${index + 1}`} 
+        alt={`pokedexPokemon entry number ${index + 1}`} 
         height='64'
         width='64'
-        style={{ marginBottom: '5px' }}
       />
       <span>
         {
@@ -56,17 +51,16 @@ const PokemonCard = (props) => {
             : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
         }
       </span>
-      <br></br>
       <span ref={spanType}>
           {
-            poke.map((p, i) => {
+            pokedexPokemon.map((p, i) => {
               if (pokemon === p) {
-                return types[i];
+                return pokedexTypes[i];
               }
               return null;
             })
           }
-        </span>
+      </span>
     </button>
   );
 };

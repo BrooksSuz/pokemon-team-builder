@@ -7,7 +7,7 @@
   align-items: flex-start;
 }
 
-ul[class^=type-slot] {
+div[class^=type-slot] {
   font-size: 14px;
   border-left: 1px solid white;
   border-right: 1px solid white;
@@ -17,18 +17,22 @@ ul[class^=type-slot] {
   flex-direction: column;
   align-items: center;
   flex: 1;
-  list-style: none;
 }
 
-ul[class^=type-slot-1] {
+div[class^=type-slot-1] {
   border-left: none;
 }
 
-ul[class^=type-slot-6] {
+div[class^=type-slot-6] {
   border-right: none;
 }
 
-li h3 {
+.type-chart h2 {
+  position: absolute;
+  align-self: flex-end;
+}
+
+.type-chart h3 {
   border-bottom: 1px solid white;
   margin-top: 5px;
 }

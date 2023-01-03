@@ -4,25 +4,24 @@ import { getParties, updateParty } from "../../firebase.config";
 const FormTeamSelection = (props) => {
   const { party, setParty, userSignedIn } = props;
 
-  const formCreation = useRef();
+  const formSelection = useRef();
   const selectTeam = useRef();
   const btnSave = useRef();
 
   const updatePaldeaParty = () => {
-    updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value);
+    updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value).then(alert('Party updated!'));
   };
 
   useEffect(() => {
     if (userSignedIn) {
       getParties().then(res => setParty(res.parties['party-1']));
     }
-  }, [userSignedIn])
+  }, [setParty, userSignedIn]);
 
   return (
     <form
-      className='team-creation'
-      style={{ position: 'absolute', alignSelf: 'flex-end' }}
-      ref={formCreation}
+      className='team-selection'
+      ref={formSelection}
     >
       <select
         name='select-team'
@@ -49,7 +48,6 @@ const FormTeamSelection = (props) => {
       </select>
       <button
         type='button'
-        style={{ margin: '1px' }}
         onClick={updatePaldeaParty}
         ref={btnSave}
       >

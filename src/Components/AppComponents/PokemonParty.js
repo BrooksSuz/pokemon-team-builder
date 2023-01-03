@@ -3,7 +3,7 @@ import PartySlot from '../PokemonPartyComponents/PartySlot';
 import '../../styles/PokemonParty.css';
 
 const PokemonParty = (props) => {
-  const {party, setParty, userSignedIn} = props;
+  const { party, setParty, userSignedIn } = props;
 
   const spanInfo = useRef();
   const btnDeleteAll = useRef();
@@ -20,7 +20,7 @@ const PokemonParty = (props) => {
     const spanStyle = spanInfo.current.style;
     const test = party.some(slot => {
       for (const key in slot) {
-        return slot[key] === '' ? false : true;
+        return Boolean(slot[key]);
       }
       return null;
     });
@@ -36,12 +36,12 @@ const PokemonParty = (props) => {
 
   return (
     <div className='pokemon-party container'>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', alignSelf: 'flex-start' }}>
+      <div className='heading-span'>
         <h2>Pokemon Party</h2>
         <span ref={spanInfo}>Your pokemon will show up here</span>
       </div>
       <button
-        style={{ visibility: 'hidden', margin: '20px', position: 'absolute', alignSelf: 'flex-start' }}
+        className='btn-delete-all'
         onClick={onClickDeleteParty}
         ref={btnDeleteAll}
       >

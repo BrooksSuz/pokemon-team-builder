@@ -4,14 +4,13 @@ import { loginEmailPassword } from "../../firebase.config";
 const FormLogin = forwardRef((props, ref) => {
   const { setUser, setUserSignedIn } = props;
 
-  // Start ref variables
   const inputEmail = useRef();
   const inputPassword = useRef();
   const spanError = useRef();
-  // End ref variables
 
   const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value).then(res => {
     const spanStyle = spanError.current.style;
+
     if (res === null) {
       spanStyle.display = 'inline';
       return null;

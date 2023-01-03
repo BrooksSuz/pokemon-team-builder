@@ -7,6 +7,11 @@
   transform: translate(-50%, -50%);
 }
 
+.team-selection {
+  position: absolute;
+  align-self: flex-end;
+}
+
 header {
   grid-area: header;
   margin: 5px 5px 0 5px;
@@ -19,4 +24,8 @@ header {
 h1 {
   font-size: 24px;
   margin-bottom: 5px;
+}
+
+button {
+  margin: 1px;
 }

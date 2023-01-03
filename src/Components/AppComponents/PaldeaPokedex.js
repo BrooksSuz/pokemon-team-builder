@@ -21,6 +21,7 @@ const PaldeaPokedex = (props) => {
 
   useEffect(() => {
     fillPokedex();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -45,11 +46,11 @@ const PaldeaPokedex = (props) => {
             })
             .map((pokemon, index) => (
             <PokemonCard
+              pokemon={pokemon}
               party={party}
               setParty={setParty}
-              poke={pokedex.poke}
-              pokemon={pokemon}
-              types={pokedex.types}
+              pokedexPokemon={pokedex.poke}
+              pokedexTypes={pokedex.types}
               index={index}
               key={index}
             />
