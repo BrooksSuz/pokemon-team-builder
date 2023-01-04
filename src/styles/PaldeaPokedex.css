@@ -1,6 +1,5 @@
 .pokemon-list {
   margin-right: 5px;
-  margin-bottom: 5px;
   min-width: 200px;
   grid-area: pokemon-list;
   font-size: 13px;

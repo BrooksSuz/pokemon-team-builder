@@ -109,41 +109,74 @@ const TypeSlot = (props) => {
       const type1 = arr[0];
       const type2 = arr[1];
 
+      // Add type one effectiveness
       superEffective = superEffective.concat(pokemonTypes[type1].superEffective);
       notEffective = notEffective.concat(pokemonTypes[type1].notEffective);
       noEffect = noEffect.concat(pokemonTypes[type1].noEffect);
 
+      // Add type two effectiveness
       superEffective = superEffective.concat(pokemonTypes[type2].superEffective);
       notEffective = notEffective.concat(pokemonTypes[type2].notEffective);
       noEffect = noEffect.concat(pokemonTypes[type2].noEffect);
 
+      // If nothing to display, display "none"
+      if (superEffective.length === 0) {
+        superEffective = superEffective.concat('none');
+      }
+
+      if (notEffective.length === 0) {
+        notEffective = notEffective.concat('none');
+      }
+
+      if (noEffect.length === 0) {
+        noEffect = noEffect.concat('none');
+      }
+
+      // Remove any duplicate values
       superEffective = [...new Set(superEffective)];
       notEffective = [...new Set(notEffective)];
       noEffect = [...new Set(noEffect)];
 
+      // Set the state variables
       setSuperEffective(superEffective);
       setNotEffective(notEffective);
       setNoEffect(noEffect);
     } else {
+      // Add type effectiveness
       superEffective = superEffective.concat(pokemonTypes[str].superEffective);
       notEffective = notEffective.concat(pokemonTypes[str].notEffective);
       noEffect = noEffect.concat(pokemonTypes[str].noEffect);
-  
+
+      // If nothing to display, display "none"
+      if (superEffective.length === 0) {
+        superEffective = superEffective.concat('none');
+      }
+
+      if (notEffective.length === 0) {
+        notEffective = notEffective.concat('none');
+      }
+
+      if (noEffect.length === 0) {
+        noEffect = noEffect.concat('none');
+      }
+
+      // Remove any duplicate values
       superEffective = [...new Set(superEffective)];
       notEffective = [...new Set(notEffective)];
       noEffect = [...new Set(noEffect)];
-  
+      
+      // Set the state variables
       setSuperEffective(superEffective);
       setNotEffective(notEffective);
       setNoEffect(noEffect);
     }
   };
 
-  useEffect((prevParty) => {
+  useEffect(prevParty => {
     if (prevParty !== party && party[index].pokeType) {
       calculateTypeMatchups(party[index].pokeType);
     }
-  }, [index, party]);
+  }, [party, index]);
 
   return (
     <div className={`type-slot-${index + 1}`}>
@@ -153,11 +186,11 @@ const TypeSlot = (props) => {
               <h3>Type</h3>
               <p>{party[index].pokeType}</p>
               <h3>Super Effective Against</h3>
-              {superEffective.map((type, j) => <p key={j}>{type}</p>)}
-              <h3>Not Effective</h3>
-              {notEffective.map((type, j) => <p key ={j}>{type}</p>)}
-              <h3>No Effect</h3>
-              {noEffect.map((type, j) => <p key={j}>{type}</p>)}
+              {superEffective.map((type, i) => <p key={i}>{type}</p>)}
+              <h3>Not Effective Against</h3>
+              {notEffective.map((type, i) => <p key={i}>{type}</p>)}
+              <h3>No Effect Against</h3>
+              {noEffect.map((type, i) => <p key={i}>{type}</p>)}
             </>
           : null
       }

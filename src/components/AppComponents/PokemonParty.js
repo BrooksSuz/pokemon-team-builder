@@ -18,14 +18,14 @@ const PokemonParty = (props) => {
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
     const spanStyle = spanInfo.current.style;
-    const test = party.some(slot => {
+    const isKeyTrue = party.some(slot => {
       for (const key in slot) {
         return Boolean(slot[key]);
       }
       return null;
     });
 
-    if (test || userSignedIn) {
+    if (isKeyTrue || userSignedIn) {
       btnStyle.visibility = 'visible'
       spanStyle.visibility ='hidden'
     } else {
@@ -39,14 +39,14 @@ const PokemonParty = (props) => {
       <div className='heading-span'>
         <h2>Pokemon Party</h2>
         <span ref={spanInfo}>Your pokemon will show up here</span>
+        <button
+          className='btn-delete-all'
+          onClick={onClickDeleteParty}
+          ref={btnDeleteAll}
+        >
+          Delete Entire Party
+        </button>
       </div>
-      <button
-        className='btn-delete-all'
-        onClick={onClickDeleteParty}
-        ref={btnDeleteAll}
-      >
-        Delete Entire Party
-      </button>
       {
         Array.from(
           { length: 6 }, (_, index) => 

@@ -6,18 +6,11 @@ const FormLogin = forwardRef((props, ref) => {
 
   const inputEmail = useRef();
   const inputPassword = useRef();
-  const spanError = useRef();
 
   const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value).then(res => {
-    const spanStyle = spanError.current.style;
-
     if (res === null) {
-      spanStyle.display = 'inline';
+      alert('Could not sign in');
       return null;
-    }
-
-    if (spanStyle.display === 'inline') {
-      spanStyle.display = 'none';
     }
 
     setUser(res);
@@ -29,11 +22,6 @@ const FormLogin = forwardRef((props, ref) => {
       style={{ display: 'block' }}
       ref={ref}
     >
-      <span
-        style={{ display: 'none' }}
-        ref={spanError}
-      >
-          Something went wrong, sorry!</span>
       <label>
         Email:
         <input

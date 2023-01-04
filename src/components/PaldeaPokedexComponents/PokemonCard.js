@@ -1,25 +1,39 @@
 import { useRef } from "react";
 
 const PokemonCard = (props) => {
-  const { pokemon, party, setParty, pokedexPokemon, pokedexTypes, index } = props;
+  const {
+    pokemon,
+    party,
+    setParty,
+    pokedexPokemon,
+    pokedexTypes,
+    index
+  } = props;
 
   const spanType = useRef();
 
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];
 
-    // Add name & sprite
     for (let i = 0; i < copyParty.length; i++) {
       if (copyParty[i].pokeSprite === ''
           && copyParty[i].pokeName === ''
           && copyParty[i].pokeType === '') {
+
+        // Add name to party
         copyParty[i].pokeName = pokemon;
+
+        // Add sprite to party
         copyParty[i].pokeSprite = `https://img.pokemondb.net/sprites/scarlet-violet/normal/${
           pokemon.includes(' ')
             ? pokemon.charAt(0).toLowerCase() + pokemon.slice(1).replace(' ', '-')
             : pokemon.charAt(0).toLowerCase() + pokemon.slice(1)
         }.png`;
+
+        // Add type to party
         copyParty[i].pokeType = spanType.current.textContent;
+
+        // Stop the loop from going any farther
         break;
       }
     }
@@ -47,7 +61,7 @@ const PokemonCard = (props) => {
       <span>
         {
           pokemon.includes('-') && !(index > 391 && index < 396)
-            ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')/* THIS WORKS FOR DISPLAYING A CAPITAL LETTER, DOES NOT WORK FOR APPLYING POKESPRITE INTO PARTYSLOT .replace(`${pokemon[pokemon.indexOf('-') + 1]}`, `${pokemon[pokemon.indexOf('-') + 1].toUpperCase()}`) */
+            ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')
             : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
         }
       </span>

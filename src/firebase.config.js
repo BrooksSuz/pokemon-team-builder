@@ -13,6 +13,7 @@ import {
   signOut
 } from "firebase/auth";
 
+// Firebase config object
 const firebaseConfig = {
   apiKey: "AIzaSyDkOisj0Kn2lzwSN1rx5oee8sR0bqY6j4Y",
   authDomain: "pokemon-team-builder-e7dd8.firebaseapp.com",
@@ -28,28 +29,28 @@ let userUID = '';
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore();
 const auth = getAuth(app);
-const paldeaPokdexRef = doc(firestore, 'gen-ix/pokedex');
+const paldeaPokedexRef = doc(firestore, 'gen-ix/pokedex');
 const blankParty = Array.from({ length: 6 }, () => {
   return { pokeName: '', pokeSprite: '', pokeType: '' };
 });
 
-// Function that gets pokemon information
+// Get pokemon data
 const getPaldeaPokedex = async () => {
-  const mySnapshot = await getDoc(paldeaPokdexRef);
+  const mySnapshot = await getDoc(paldeaPokedexRef);
   if (mySnapshot.exists()) {
     return mySnapshot.data().paldea;
   }
 }; 
 
-// Function that gets pokemon type information
+// Get pokemon type data
 const getPokemonTypes = async () => {
-  const mySnapshot = await getDoc(paldeaPokdexRef);
+  const mySnapshot = await getDoc(paldeaPokedexRef);
   if (mySnapshot.exists()) {
     return mySnapshot.data().types;
   }
 };
 
-// Function that creates new user accounts
+// Create new users
 const createAccount = async (email, pass) => {
   try {
     const userCredentials = await createUserWithEmailAndPassword(auth, email, pass);
@@ -69,7 +70,7 @@ const createAccount = async (email, pass) => {
   }
 };
 
-// Function that logs users in
+// Log users in
 const loginEmailPassword = async (email, pass) => {
   try {
     const userCredentials = await signInWithEmailAndPassword(auth, email, pass);
@@ -80,7 +81,7 @@ const loginEmailPassword = async (email, pass) => {
   }
 };
 
-// Function that gets user's parties
+// Get the user's existing parties
 const getParties = async () => {
   const userRef = doc(firestore, 'users', userUID);
   const docSnap = await getDoc(userRef);
@@ -90,7 +91,7 @@ const getParties = async () => {
   }
 };
 
-// Function that adds/updates the user's parties
+// Add/update the user's parties
 const updateParty = async (arr, selectedOption) => {
   const userRef = doc(firestore, 'users', userUID);
 
@@ -109,8 +110,9 @@ const updateParty = async (arr, selectedOption) => {
   }
 };
 
-// Function that logs users out
+// Logout user out
 const logout = async () => {
+  userUID = '';
   await signOut(auth);
 };
 

@@ -9,7 +9,8 @@ const FormTeamSelection = (props) => {
   const btnSave = useRef();
 
   const updatePaldeaParty = () => {
-    updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value).then(alert('Party updated!'));
+    updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value)
+      .then(alert('Party updated!'));
   };
 
   useEffect(() => {

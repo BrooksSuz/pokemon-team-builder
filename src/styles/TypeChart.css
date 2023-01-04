@@ -1,6 +1,5 @@
 .type-chart {
   margin-left: 5px;
-  margin-bottom: 5px;
   grid-area: type-chart;
   display: flex;
   justify-content: center;

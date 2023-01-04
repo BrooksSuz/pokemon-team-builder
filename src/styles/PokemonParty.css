@@ -6,19 +6,22 @@
   align-items: flex-end;
 }
 
-.btn-delete-all {
-  visibility: hidden;
-  margin: 20px;
-  position: absolute;
-  align-self: flex-start;
-}
-
 .heading-span {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   align-self: flex-start;
+}
+
+.heading-span span {
+  font-size: 13px;
+}
+
+.btn-delete-all {
+  position: absolute;
+  margin-top: 23px;
+  font-size: 13px;
 }
 
 div[class^=party] {

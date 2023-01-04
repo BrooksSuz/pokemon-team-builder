@@ -37,6 +37,9 @@ const App = () => {
       <TypeChart
         party={party}
       />
+      <footer className='container'>
+        <span>Pokémon is © of Nintendo, 1995-2023</span>
+      </footer>
     </>
   );
 };
