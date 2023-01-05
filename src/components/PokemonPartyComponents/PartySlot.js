@@ -5,6 +5,7 @@ const PartySlot = (props) => {
   const divSlot = useRef();
   const btnDelete = useRef();
 
+  // On click, replace the current pokemon slot with empty values
   const onClickDeleteSlot = () => {
     const copyParty = [...party];
 

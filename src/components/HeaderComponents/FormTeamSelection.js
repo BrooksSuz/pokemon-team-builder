@@ -3,21 +3,23 @@ import { getParties, updateParty } from "../../firebase.config";
 
 const FormTeamSelection = (props) => {
   const { party, setParty, userSignedIn } = props;
-
   const formSelection = useRef();
   const selectTeam = useRef();
   const btnSave = useRef();
 
+  // Update party for current user
   const updatePaldeaParty = () => {
     updateParty(party, selectTeam.current.options[selectTeam.current.options.selectedIndex].value)
       .then(alert('Party updated!'));
   };
 
+  // On userSignedin update to true, get current user's party 1
   useEffect(() => {
     if (userSignedIn) {
       getParties().then(res => setParty(res.parties['party-1']));
     }
-  }, [setParty, userSignedIn]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSignedIn]);
 
   return (
     <form

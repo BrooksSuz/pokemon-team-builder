@@ -19,6 +19,7 @@ const Header = (props) => {
   const formCreate = useRef();
   const btnHideComponents = useRef();
 
+  // On click, show/hide the login form
   const onClickDisplayLogin = () => {
     const divStyle = divFormContainer.current.style;
 
@@ -29,6 +30,7 @@ const Header = (props) => {
     }
   };
 
+  // On click, switch between the login form and the create an account form
   const onClickChangeDisplayForms = () => {
     const loginStyle = formLogin.current.style;
     const createStyle = formCreate.current.style;
@@ -45,6 +47,7 @@ const Header = (props) => {
     }
   };
 
+  // On userSignedIn update, remove login/create account form
   useEffect(() => {
     const divStyle = divFormContainer.current.style;
 
@@ -57,6 +60,7 @@ const Header = (props) => {
     <header className='container'>
       <h1>Pokemon Scarlet & Violet Team Builder</h1>
       {
+        // When signed in, display logout button and team selection form
         userSignedIn
           ? <>
               <Logout
@@ -71,6 +75,7 @@ const Header = (props) => {
                 userSignedIn={userSignedIn}
               />
             </>
+            // While not signed in, display sign in button
           : <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
       }
       <div

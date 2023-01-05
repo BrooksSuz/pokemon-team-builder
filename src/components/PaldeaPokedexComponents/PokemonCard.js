@@ -9,12 +9,15 @@ const PokemonCard = (props) => {
     pokedexTypes,
     index
   } = props;
-
   const spanType = useRef();
 
+  // On click, add the pokemon to the party
   const onClickAddPokemon = pokemon => {
     const copyParty = [...party];
 
+    /* 
+      Loop through the party. For each party slot, add the respective information required. 
+    */
     for (let i = 0; i < copyParty.length; i++) {
       if (copyParty[i].pokeSprite === ''
           && copyParty[i].pokeName === ''
@@ -49,6 +52,7 @@ const PokemonCard = (props) => {
     >
       <span>
         {
+          // Add pokedex index
           pokedexPokemon.findIndex(entry => pokemon === entry) + 1
         }
       </span>
@@ -60,6 +64,7 @@ const PokemonCard = (props) => {
       />
       <span>
         {
+          // Format and add pokemon names
           pokemon.includes('-') && !(index > 391 && index < 396)
             ? pokemon.charAt(0).toUpperCase() + pokemon.slice(1).replace('-', ' ')
             : pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
@@ -67,6 +72,7 @@ const PokemonCard = (props) => {
       </span>
       <span ref={spanType}>
           {
+            // Add pokemon types
             pokedexPokemon.map((p, i) => {
               if (pokemon === p) {
                 return pokedexTypes[i];

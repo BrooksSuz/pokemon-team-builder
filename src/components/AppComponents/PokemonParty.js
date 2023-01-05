@@ -4,10 +4,10 @@ import '../../styles/PokemonParty.css';
 
 const PokemonParty = (props) => {
   const { party, setParty, userSignedIn } = props;
-
   const spanInfo = useRef();
   const btnDeleteAll = useRef();
 
+  // On click, replace all six party slots with empty values
   const onClickDeleteParty = () => {
     const arr = Array.from({ length: 6 }, () => {
       return { pokeName: '', pokeSprite: '', pokeType: '' };
@@ -15,6 +15,7 @@ const PokemonParty = (props) => {
     setParty(arr);
   };
 
+  // On party or userSignedIn update, show/hide spanInfo/btnDeleteAll respectively
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
     const spanStyle = spanInfo.current.style;

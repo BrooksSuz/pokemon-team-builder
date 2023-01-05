@@ -8,6 +8,7 @@ const PaldeaPokedex = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pokedex, setPokedex] = useState({ poke: [], types: [] });
 
+  // Get pokemon data from backend
   const fillPokedex = async () => {
     const copyPokedex = Object.assign({}, pokedex);
     const paldeaPokedex = await getPaldeaPokedex();
@@ -19,6 +20,7 @@ const PaldeaPokedex = (props) => {
     setPokedex(copyPokedex);
   };
 
+  // On mount, fill pokedex variable with all Paldea Pokemon names & types
   useEffect(() => {
     fillPokedex();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,12 +40,14 @@ const PaldeaPokedex = (props) => {
       </label>
       <div className='entry-container'>
         {
+          // First, filter based upon searchTerm value (pokemon name or type)
           pokedex.poke
             .filter((pokemon, i) => {
               return searchTerm === ''
                 ? pokemon
                 : pokemon.includes(searchTerm) || pokedex.types[i].includes(searchTerm);
             })
+            // Then, display the filtered results
             .map((pokemon, index) => (
             <PokemonCard
               pokemon={pokemon}

@@ -99,6 +99,7 @@ const TypeSlot = (props) => {
   const [notEffective, setNotEffective] = useState([]);
   const [noEffect, setNoEffect] = useState([]);
 
+  // Takes in a string and outputs a set of respective types
   const calculateTypeMatchups = str => {
     let superEffective = [];
     let notEffective = [];
@@ -172,6 +173,7 @@ const TypeSlot = (props) => {
     }
   };
 
+  // On party or index update, calculate type matchups
   useEffect(prevParty => {
     if (prevParty !== party && party[index].pokeType) {
       calculateTypeMatchups(party[index].pokeType);

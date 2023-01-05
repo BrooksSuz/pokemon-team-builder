@@ -7,6 +7,7 @@ const FormCreateAccount = forwardRef((props, ref) => {
   const inputEmail = useRef();
   const inputPassword = useRef();
 
+  // Create new user account and sign them in
   const createPaldeaAccount = () => createAccount(inputEmail.current.value, inputPassword.current.value).then(res => {
     if (res === null) {
       alert('Could not sign in');

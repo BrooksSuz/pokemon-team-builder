@@ -3,10 +3,10 @@ import { loginEmailPassword } from "../../firebase.config";
 
 const FormLogin = forwardRef((props, ref) => {
   const { setUser, setUserSignedIn } = props;
-
   const inputEmail = useRef();
   const inputPassword = useRef();
 
+  // Log in an existing user
   const loginPaldea = () => loginEmailPassword(inputEmail.current.value, inputPassword.current.value).then(res => {
     if (res === null) {
       alert('Could not sign in');
