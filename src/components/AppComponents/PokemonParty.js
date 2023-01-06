@@ -3,7 +3,7 @@ import PartySlot from '../PokemonPartyComponents/PartySlot';
 import '../../styles/PokemonParty.css';
 
 const PokemonParty = (props) => {
-  const { party, setParty, userSignedIn } = props;
+  const { party, setParty } = props;
   const spanInfo = useRef();
   const btnDeleteAll = useRef();
 
@@ -19,21 +19,19 @@ const PokemonParty = (props) => {
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
     const spanStyle = spanInfo.current.style;
-    const isKeyTrue = party.some(slot => {
-      for (const key in slot) {
-        return Boolean(slot[key]);
-      }
-      return null;
-    });
+    const isKeyTrue = party.some(slot => Boolean(slot.pokeType));
 
-    if (isKeyTrue || userSignedIn) {
-      btnStyle.visibility = 'visible'
-      spanStyle.visibility ='hidden'
-    } else {
-      btnStyle.visibility = 'hidden';
-      spanStyle.visibility = 'visible';
+    if (!isKeyTrue) {
+      btnStyle.visibility = 'hidden'
+      spanStyle.visibility ='visible'
     }
-  }, [party, userSignedIn]);
+    
+    if (isKeyTrue) {
+      btnStyle.visibility = 'visible';
+      spanStyle.visibility = 'hidden';
+    }
+
+  }, [party]);
 
   return (
     <div className='pokemon-party container'>

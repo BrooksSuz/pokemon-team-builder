@@ -33,7 +33,6 @@ const App = () => {
       <PokemonParty
         party={party}
         setParty={setParty}
-        userSignedIn={userSignedIn}
       />
       <PaldeaPokedex
         party={party}

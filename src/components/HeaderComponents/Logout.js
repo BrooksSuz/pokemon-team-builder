@@ -1,4 +1,4 @@
-import { logout } from "../../firebase.config";
+import { logout } from "../../firebase-functions";
 
 const Logout = (props) => {
   const { setParty, user, setUser, setUserSignedIn } = props;

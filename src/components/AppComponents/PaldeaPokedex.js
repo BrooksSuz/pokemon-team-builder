@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PokemonCard from '../PaldeaPokedexComponents/PokemonCard';
-import { getPaldeaPokedex, getPokemonTypes } from '../../firebase.config';
+import { getPaldeaPokedex, getPokemonTypes } from '../../firebase-functions';
 import '../../styles/PaldeaPokedex.css';
 
 const PaldeaPokedex = (props) => {

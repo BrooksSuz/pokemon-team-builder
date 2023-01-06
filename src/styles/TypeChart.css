@@ -3,7 +3,7 @@
   grid-area: type-chart;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 div[class^=type-slot] {
@@ -28,7 +28,7 @@ div[class^=type-slot-6] {
 
 .type-chart h2 {
   position: absolute;
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .type-chart h3 {
