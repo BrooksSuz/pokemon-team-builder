@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import PartySlot from '../PokemonPartyComponents/PartySlot';
-import '../../styles/PokemonParty.css';
+import { useEffect, useRef } from "react";
+import PartySlot from "../PokemonPartyComponents/PartySlot";
+import "../../styles/PokemonParty.css";
 
 const PokemonParty = (props) => {
   const { party, setParty } = props;
@@ -24,9 +24,7 @@ const PokemonParty = (props) => {
     if (!isKeyTrue) {
       btnStyle.visibility = 'hidden'
       spanStyle.visibility ='visible'
-    }
-    
-    if (isKeyTrue) {
+    } else {
       btnStyle.visibility = 'visible';
       spanStyle.visibility = 'hidden';
     }

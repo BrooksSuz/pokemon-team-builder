@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import PokemonCard from '../PaldeaPokedexComponents/PokemonCard';
-import { getPaldeaPokedex, getPokemonTypes } from '../../firebase-functions';
-import '../../styles/PaldeaPokedex.css';
+import { useState, useEffect } from "react";
+import PokemonCard from "../PaldeaPokedexComponents/PokemonCard";
+import { getPaldeaPokedex, getPokemonTypes } from "../../firebase-functions";
+import "../../styles/PaldeaPokedex.css";
 
 const PaldeaPokedex = (props) => {
   const {party, setParty} = props;

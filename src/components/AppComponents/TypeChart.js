@@ -1,5 +1,5 @@
 import TypeSlot from "../TypeChartComponents/TypeSlot";
-import '../../styles/TypeChart.css';
+import "../../styles/TypeChart.css";
 
 const TypeChart = (props) => {
   const { party } = props;

@@ -6,12 +6,11 @@ import {
   signOut
 } from 'firebase/auth';
 
-let userUID = '';
-
 const paldeaPokedexRef = doc(firestore, 'gen-ix/pokedex');
 const blankParty = Array.from({ length: 6 }, () => {
   return { pokeName: '', pokeSprite: '', pokeType: '' };
 });
+let userUID = '';
 
 // Get pokemon data
 const getPaldeaPokedex = async () => {

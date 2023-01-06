@@ -23,3 +23,7 @@ If the user would like to save their parties, then they will have to create an a
 The app is currently only designed for desktop/laptop users. I intend on making it responsive to mobile users in the near future. I want to think about the best way to display the information on mobile devices while following the user experience philosophy that I covered in the Brief Rundown section.
 
 I need to make the app "prettier". Currently it uses a lot of preset HTML styles. I am thinking about how I want the app to look.
+
+If a user searches one of the pokemon with a hyphen in it's name, the pokemon card returns a space instead of a hyphen. I'm sure this is a simple logic mistake that I'm missing and hope to fix it soon.
+
+Unrelated to the functionality of the app, but I would like to figure out an organizational method for my style sheets.

@@ -1,6 +1,6 @@
 import { useRef, forwardRef } from "react";
 import { createAccount } from "../../firebase-functions";
-import '../../styles/Header.css';
+import "../../styles/Header.css";
 
 const FormCreateAccount = forwardRef((props, ref) => {
   const { setUser, setUserSignedIn } = props;
@@ -10,7 +10,7 @@ const FormCreateAccount = forwardRef((props, ref) => {
   // Create new user account and sign them in
   const createPaldeaAccount = () => createAccount(inputEmail.current.value, inputPassword.current.value).then(res => {
     if (res === null) {
-      alert('Could not sign in');
+      alert('Could not create account');
       return null;
     }
 
