@@ -23,8 +23,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  min-height: 115px;
-  min-width: 115px;
+  flex-basis: 70%;
 }
 
 .entry:hover {

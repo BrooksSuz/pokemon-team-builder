@@ -6,6 +6,7 @@ const PokemonParty = (props) => {
   const { party, setParty } = props;
   const spanInfo = useRef();
   const btnDeleteAll = useRef();
+  const h2PokemonParty = useRef();
 
   // On click, replace all six party slots with empty values
   const onClickDeleteParty = () => {
@@ -15,18 +16,21 @@ const PokemonParty = (props) => {
     setParty(arr);
   };
 
-  // On party or userSignedIn update, show/hide spanInfo/btnDeleteAll respectively
+  // On party or userSignedIn update, show/hide spanInfo & h2PokemonParty/btnDeleteAll respectively
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
     const spanStyle = spanInfo.current.style;
+    const h2Style = h2PokemonParty.current.style;
     const isKeyTrue = party.some(slot => Boolean(slot.pokeType));
 
     if (!isKeyTrue) {
-      btnStyle.visibility = 'hidden'
-      spanStyle.visibility ='visible'
+      btnStyle.visibility = 'hidden';
+      spanStyle.visibility = 'visible';
+      h2Style.visibility = 'visible';
     } else {
       btnStyle.visibility = 'visible';
       spanStyle.visibility = 'hidden';
+      h2Style.visibility = 'hidden';
     }
 
   }, [party]);
@@ -34,7 +38,7 @@ const PokemonParty = (props) => {
   return (
     <div className='pokemon-party container'>
       <div className='heading-span'>
-        <h2>Pokemon Party</h2>
+        <h2 ref={h2PokemonParty}>Pokemon Party</h2>
         <span ref={spanInfo}>Your pokemon will show up here</span>
         <button
           className='btn-delete-all'

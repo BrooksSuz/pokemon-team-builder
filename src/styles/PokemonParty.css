@@ -20,18 +20,17 @@
 
 .btn-delete-all {
   position: absolute;
-  margin-top: 23px;
   font-size: 13px;
 }
 
 div[class^=party] {
   border-left: 1px solid white;
   border-right: 1px solid white;
-  min-height: 180px;
-  min-width: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 181px;
+  flex-basis: 100%;
   flex: 1;
 }
 
