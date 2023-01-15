@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pokemon-team-builder/static/css/main.7938aafe.css",
+    "main.js": "/pokemon-team-builder/static/js/main.1fc50d2e.js",
+    "index.html": "/pokemon-team-builder/index.html",
+    "main.7938aafe.css.map": "/pokemon-team-builder/static/css/main.7938aafe.css.map",
+    "main.1fc50d2e.js.map": "/pokemon-team-builder/static/js/main.1fc50d2e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7938aafe.css",
+    "static/js/main.1fc50d2e.js"
+  ]
+}
