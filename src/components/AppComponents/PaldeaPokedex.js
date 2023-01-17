@@ -45,7 +45,7 @@ const PaldeaPokedex = (props) => {
             .filter((pokemon, i) => {
               return searchTerm === ''
                 ? pokemon
-                : pokemon.includes(searchTerm) || pokedex.types[i].includes(searchTerm);
+                : pokemon.slice().toLowerCase().includes(searchTerm.slice().toLowerCase()) || pokedex.types[i].slice().toLowerCase().includes(searchTerm.slice().toLowerCase());
             })
             // Then, display the filtered results
             .map((pokemon, index) => (
