@@ -39,7 +39,7 @@ const Header = (props) => {
     if (loginStyle.display === 'block' && createStyle.display === 'none') {
       loginStyle.display = 'none';
       createStyle.display ='block';
-      btnCurrent.textContent = 'Whoopsie, take me back';
+      btnCurrent.textContent = 'Need to login?';
     } else {
       loginStyle.display = 'block';
       createStyle.display = 'none';

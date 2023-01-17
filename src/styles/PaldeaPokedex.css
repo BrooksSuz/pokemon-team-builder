@@ -1,4 +1,5 @@
 .pokemon-list {
+  margin: 5px 0;
   margin-right: 5px;
   min-width: 200px;
   grid-area: pokemon-list;
@@ -19,11 +20,11 @@
 }
 
 .entry {
+  width: clamp(119px, 134px, 174px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  flex-basis: 70%;
 }
 
 .entry:hover {
@@ -32,7 +33,7 @@
 }
 
 label {
-  margin: 10px 0;
+  margin: 0.5rem;
 }
 
 img {
@@ -41,4 +42,25 @@ img {
 
 span {
   pointer-events: none;
+}
+
+@media (max-width: 820px) {
+  .pokemon-list {
+    margin: 0;
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 601px) {
+  .pokemon-list {
+    margin: 0;
+  }
+
+  .pokemon-list h2 {
+    font-size: 12px;
+  }
+
+  .pokemon-list label {
+    font-size: 10px;
+  }
 }

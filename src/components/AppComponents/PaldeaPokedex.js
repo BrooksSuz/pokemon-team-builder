@@ -34,7 +34,7 @@ const PaldeaPokedex = (props) => {
         <input
           type='text'
           name='search-dex'
-          placeholder='Paldea Awaits...'
+          placeholder='Name or Type'
           onChange={e => setSearchTerm(e.target.value)}
         />
       </label>

@@ -1,32 +1,68 @@
 .form-container {
-  max-height: 250px;
-  max-width: 250px;
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 20%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
 
-.team-selection {
-  position: absolute;
-  align-self: flex-end;
+.form-container > * {
+  margin: 0.1rem;
+}
+
+.logout-container {
+  gap: 0.6rem;
 }
 
 header {
   grid-area: header;
-  margin: 5px 5px 0 5px;
+  padding: 0.2rem;
+  margin: 5px 0 0 5px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 h1 {
+  position: absolute;
   font-size: 24px;
   margin-bottom: 5px;
+  align-self: flex-start;
 }
 
-button {
-  margin: 1px;
+label {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 820px) {
+  header {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 601px) {
+  .logout-container * {
+    font-size: 10px;
+  }
+
+  .team-selection * {
+    font-size: 10px;
+  }
+
+  header {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+
+  header button {
+    font-size: 10px;
+  }
+
+  form {
+    font-size: 12px;
+  }
 }

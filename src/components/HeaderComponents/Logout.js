@@ -16,7 +16,7 @@ const Logout = (props) => {
   };
 
   return (
-    <div>
+    <div className='logout-container'>
       <span>Welcome, {user}</span>
       <button
         type='button'
