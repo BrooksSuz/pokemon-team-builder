@@ -3,7 +3,6 @@ import { getParties, updateParty } from "../../firebase-functions";
 
 const FormTeamSelection = (props) => {
   const { party, setParty, userSignedIn } = props;
-  const formSelection = useRef();
   const selectTeam = useRef();
   const btnSave = useRef();
 
@@ -22,41 +21,24 @@ const FormTeamSelection = (props) => {
   }, [userSignedIn]);
 
   return (
-    <form
-      className='team-selection'
-      ref={formSelection}
-    >
-      <select
-        name='select-team'
-        ref={selectTeam}
-      >
-        <option
-          value={'party-1'}
-          onClick={() => getParties().then(res => setParty(res.parties['party-1']))}
-        >
-          Party 1
-        </option>
-        <option
-          value={'party-2'}
-          onClick={() => getParties().then(res => setParty(res.parties['party-2']))}
-        >
-          Party 2
-        </option>
-        <option
-          value={'party-3'}
-          onClick={() => getParties().then(res => setParty(res.parties['party-3']))}
-        >
-          Party 3
-        </option>
-      </select>
-      <button
-        type='button'
-        onClick={updatePaldeaParty}
-        ref={btnSave}
-      >
-        Save/Update Team
+    <div className='team-selection'>
+      <button onClick={() => getParties().then(res => setParty(res.parties['party-1']))}>
+        Party 1
       </button>
-    </form>
+      <button onClick={() => getParties().then(res => setParty(res.parties['party-2']))}>
+        Party 2
+      </button>
+      <button onClick={() => getParties().then(res => setParty(res.parties['party-3']))}>
+        Party 3
+      </button>
+    <button
+      type='button'
+      onClick={updatePaldeaParty}
+      ref={btnSave}
+    >
+      Save/Update Team
+    </button>
+    </div>
   );
 };
 
