@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  z-index: 1;
 }
 
 .heading-span {
@@ -32,31 +33,16 @@ div[class^=party] {
   flex: 1;
 }
 
-div[class^=party] img {
-  height: 200px;
-  width: 200px;
-}
-
 div[class^=party] button {
   margin-bottom: 0.2rem;
   max-width: 90%;
 }
 
-@media (max-width: 1280px) {
-  div[class^=party] img {
-    height: 100px;
-    width: 100px;
-  }
-}
-
-@media (max-width: 820px) {
+@media (max-width: 1024px) {
   .pokemon-party {
     margin-right: 5px;
-  }
-
-  div[class^=party] img {
-    height: 128px;
-    width: 128px;
+    position: sticky;
+    top: 0px;
   }
 }
 
@@ -75,11 +61,6 @@ div[class^=party] button {
 
   .btn-delete-all {
     font-size: 9px;
-  }
-
-  div[class^=party] img {
-    height: 84px;
-    width: 84px;
   }
 
   div[class^=party] button {

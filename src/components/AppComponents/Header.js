@@ -62,7 +62,7 @@ const Header = (props) => {
       {
         // When signed in, display logout button and team selection form
         userSignedIn
-          ? <>
+          ? <div className='account-container'>
               <FormTeamSelection
                 party={party}
                 setParty={setParty}
@@ -74,7 +74,7 @@ const Header = (props) => {
                 setUser={setUser}
                 setUserSignedIn={setUserSignedIn}
               />
-            </>
+            </div>
             // While not signed in, display sign in button
           : <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
       }
