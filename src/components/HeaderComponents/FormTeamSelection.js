@@ -37,6 +37,7 @@ const FormTeamSelection = (props) => {
       </button>
       <button
         type='button'
+        className='button-save'
         onClick={updatePaldeaParty}
         ref={btnSave}
       >

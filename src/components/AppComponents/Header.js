@@ -63,16 +63,16 @@ const Header = (props) => {
         // When signed in, display logout button and team selection form
         userSignedIn
           ? <>
+              <FormTeamSelection
+                party={party}
+                setParty={setParty}
+                userSignedIn={userSignedIn}
+              />
               <Logout
                 setParty={setParty}
                 user={user}
                 setUser={setUser}
                 setUserSignedIn={setUserSignedIn}
-              />
-              <FormTeamSelection
-                party={party}
-                setParty={setParty}
-                userSignedIn={userSignedIn}
               />
             </>
             // While not signed in, display sign in button
