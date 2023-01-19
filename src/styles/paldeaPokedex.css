@@ -43,6 +43,11 @@
   max-width: 90%;
 }
 
+.entry img {
+  height: 64px;
+  width: 64px;
+}
+
 @media (max-width: 1024px) {
   .pokemon-list {
     margin: 0 5px;

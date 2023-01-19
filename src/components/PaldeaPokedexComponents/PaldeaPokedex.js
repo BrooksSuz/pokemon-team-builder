@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import PokemonCard from "./PokemonCard";
 import { getPaldeaPokedex, getPokemonTypes } from "../../firebase-functions";
+import PokemonCard from "./PokemonCard";
 
 const PaldeaPokedex = (props) => {
   const {party, setParty} = props;

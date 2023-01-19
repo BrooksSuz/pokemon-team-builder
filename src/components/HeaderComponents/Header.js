@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Logout from "./Logout";
-import FormTeamSelection from "./TeamSelection";
+import TeamSelection from "./TeamSelection";
 import FormLogin from "./FormLogin";
 import FormCreateAccount from "./FormCreateAccount";
 
@@ -25,7 +25,7 @@ const Header = (props) => {
 
     if (divStyle.display === 'none') {
       divStyle.display = 'block';
-    } else if (divStyle.display === 'block') {
+    } else {
       divStyle.display = 'none';
     }
   };
@@ -38,7 +38,7 @@ const Header = (props) => {
 
     if (loginStyle.display === 'block' && createStyle.display === 'none') {
       loginStyle.display = 'none';
-      createStyle.display ='block';
+      createStyle.display = 'block';
       btnCurrent.textContent = 'Need to login?';
     } else {
       loginStyle.display = 'block';
@@ -60,10 +60,10 @@ const Header = (props) => {
     <header className='container'>
       <h1>Pokemon Scarlet & Violet Team Builder</h1>
       {
-        // When signed in, display logout button and team selection form
+        // When logged in, display logout button and team selection component
         userSignedIn
           ? <div className='account-container'>
-              <FormTeamSelection
+              <TeamSelection
                 party={party}
                 setParty={setParty}
                 userSignedIn={userSignedIn}
@@ -75,7 +75,7 @@ const Header = (props) => {
                 setUserSignedIn={setUserSignedIn}
               />
             </div>
-            // While not signed in, display sign in button
+            // While not logged in, display sign in button
           : <button onClick={onClickDisplayLogin}>Show/Hide Login Form</button>
       }
       <div

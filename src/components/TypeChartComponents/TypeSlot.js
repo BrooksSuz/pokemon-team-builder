@@ -99,12 +99,13 @@ const TypeSlot = (props) => {
   const [notEffective, setNotEffective] = useState([]);
   const [noEffect, setNoEffect] = useState([]);
 
-  // Takes in a string and outputs a set of respective types
+  // Receives a string and outputs a set of respective types
   const calculateTypeMatchups = str => {
     let superEffective = [];
     let notEffective = [];
     let noEffect =[];
     
+    // If the pokemon has two types
     if (str.includes('/')) {
       const arr = str.slice().split('/');
       const type1 = arr[0];
@@ -142,6 +143,7 @@ const TypeSlot = (props) => {
       setSuperEffective(superEffective);
       setNotEffective(notEffective);
       setNoEffect(noEffect);
+      // If the pokemon has one type
     } else {
       // Add type effectiveness
       superEffective = superEffective.concat(pokemonTypes[str].superEffective);
@@ -186,13 +188,13 @@ const TypeSlot = (props) => {
         party[index].pokeType
           ? <>
               <h3>Type</h3>
-              <p>{party[index].pokeType}</p>
+              <span>{party[index].pokeType}</span>
               <h3>Super Effective Against</h3>
-              {superEffective.map((type, i) => <p key={i}>{type}</p>)}
+              {superEffective.map((type, i) => <span key={i}>{type}</span>)}
               <h3>Not Effective Against</h3>
-              {notEffective.map((type, i) => <p key={i}>{type}</p>)}
+              {notEffective.map((type, i) => <span key={i}>{type}</span>)}
               <h3>No Effect Against</h3>
-              {noEffect.map((type, i) => <p key={i}>{type}</p>)}
+              {noEffect.map((type, i) => <span key={i}>{type}</span>)}
             </>
           : null
       }

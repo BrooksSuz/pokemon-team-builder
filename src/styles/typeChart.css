@@ -24,7 +24,7 @@ div[class^=type-slot] {
   flex: 1;
 }
 
-div[class^=type-slot] p {
+div[class^=type-slot] span {
   margin-right: 0.5rem;
 }
 

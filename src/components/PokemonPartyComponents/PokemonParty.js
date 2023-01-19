@@ -15,7 +15,7 @@ const PokemonParty = (props) => {
     setParty(arr);
   };
 
-  // On party or userSignedIn update, show/hide spanInfo & h2PokemonParty/btnDeleteAll respectively
+  // On party update, show/hide btnDeleteAll & spanInfo/h2PokemonParty respectively
   useEffect(() => {
     const btnStyle = btnDeleteAll.current.style;
     const spanStyle = spanInfo.current.style;

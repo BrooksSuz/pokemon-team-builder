@@ -59,8 +59,6 @@ const PokemonCard = (props) => {
       <img
         src={`https://img.pokemondb.net/sprites/scarlet-violet/normal/${pokemon}.png`}
         alt={`pokedexPokemon entry number ${index + 1}`} 
-        height='64'
-        width='64'
       />
       <span>
         {

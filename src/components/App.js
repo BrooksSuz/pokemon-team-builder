@@ -14,19 +14,21 @@ import "../styles/typeChart.css";
 
 const App = () => {
   /*
-    Party represents the current group of pokemon selected by the user. Each party pokemon contains a name, a sprite (a URL containing the respective image), and at least one type. Each of these variables are represented by a string.
+    Party represents the current group of pokemon selected by the user. Each party pokemon is an object that contains a name, a sprite (a URL containing the respective image), and at least one type. Each of these variables are represented by a string.
   */
   const [party, setParty] = useState(
     Array.from({ length: 6 }, () => {
       return { pokeName: '', pokeSprite: '', pokeType: '' };
     }
   ));
+
   // User represents a string of the logged in user's email
   const [user, setUser] = useState('');
+
   // UserSignedIn represents the login status of the current user
   const [userSignedIn, setUserSignedIn] = useState(false);
 
-  // If user is persisted, set their email and change signed in status
+  // If the user is persisted, set their email and login status
   useEffect(() => {
     onAuthStateChanged(auth, currentUser => {
       if (currentUser) {
