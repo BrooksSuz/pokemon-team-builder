@@ -46,9 +46,9 @@ button:active {
 }
 
 input {
-  color: #E6DDC4;
-  background-color: #374947;
-  border: 1px solid #678983;
+  color: black;
+  background-color: #93AEA9;
+  border: 1px solid #374947;
 }
 
 img {
@@ -66,6 +66,11 @@ footer {
   grid-area: footer;
   display: flex;
   justify-content: center;
+}
+
+::placeholder {
+  color: #181D31;
+  opacity: 1;
 }
 
 ::-webkit-scrollbar {
