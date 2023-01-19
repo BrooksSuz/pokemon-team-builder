@@ -81,7 +81,6 @@ footer {
 
 @media (max-width: 601px) {
   #root {
-    min-height: 250vh;
     grid-template-rows: auto 150px 400px minmax(130px, 1fr) auto;
   }
 

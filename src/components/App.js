@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { auth } from "../firebase.config";
+import { onAuthStateChanged } from "firebase/auth";
 import Header from "./AppComponents/Header";
 import PokemonParty from "./AppComponents/PokemonParty";
 import PaldeaPokedex from "./AppComponents/PaldeaPokedex";
@@ -19,7 +21,17 @@ const App = () => {
   const [user, setUser] = useState('');
   // UserSignedIn represents the login status of the current user
   const [userSignedIn, setUserSignedIn] = useState(false);
-  
+
+  // If user is persisted, set their email and change signed in status
+  useEffect(() => {
+    onAuthStateChanged(auth, currentUser => {
+      if (currentUser) {
+        setUser(currentUser.email);
+        setUserSignedIn(true);
+      }
+    });
+  }, []);
+
   return (
     <>
       <Header

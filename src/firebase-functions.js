@@ -3,6 +3,7 @@ import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signOut
 } from 'firebase/auth';
 
@@ -12,7 +13,7 @@ const blankParty = Array.from({ length: 6 }, () => {
 });
 let userUID = '';
 
-// Get pokemon data
+// Get pokemon name and sprite
 const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokedexRef);
   if (mySnapshot.exists()) {
@@ -70,23 +71,30 @@ const getParties = async () => {
 };
 
 // Add/update the user's parties
-const updateParty = async (arr, selectedOption) => {
+const updateParty = async (arr, clickedButton) => {
   const userRef = doc(firestore, 'users', userUID);
 
-  if (selectedOption === 'party-1') {
+  if (clickedButton === 'party-1') {
     await updateDoc(userRef, {
       'parties.party-1': arr
     });
-  } else if (selectedOption === 'party-2') {
+  } else if (clickedButton === 'party-2') {
     await updateDoc(userRef, {
       'parties.party-2': arr
     });
-  } else if (selectedOption === 'party-3') {
+  } else if (clickedButton === 'party-3') {
     await updateDoc(userRef, {
       'parties.party-3': arr
     });
   }
 };
+
+// Persist user if they're signed in
+onAuthStateChanged(auth, currentUser => {
+  if (currentUser) {
+    userUID = currentUser.uid;
+  }
+});
 
 // Log user out
 const logout = async () => {

@@ -11,9 +11,7 @@ const FormTeamSelection = (props) => {
 
   // Update party for current user
   const updatePaldeaParty = () => {
-    updateParty(party, currentParty)
-      .then(alert('Party updated!'));
-    
+    updateParty(party, currentParty).then(alert('Party updated!'));
   };
 
   // On userSignedin update to true, get current user's party 1
