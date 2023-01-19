@@ -18,7 +18,7 @@ const pokemonTypes = {
     superEffective: ['fire', 'ground', 'rock']
   },
   electric: {
-    noEffect: [],
+    noEffect: ['ground'],
     notEffective: ['electric', 'grass', 'dragon'],
     superEffective: ['water', 'flying']
   },
@@ -33,26 +33,27 @@ const pokemonTypes = {
     superEffective: ['grass', 'ground', 'flying', 'dragon']
   },
   fighting: {
+    noEffect: ['ghost'],
     notEffective: ['poison', 'flying', 'psychic', 'bug', 'fairy'],
     superEffective: ['normal', 'ice', 'rock', 'dark', 'steel']
   },
   poison: {
-    noEffect: [],
+    noEffect: ['steel'],
     notEffective: ['poison', 'ground', 'rock', 'ghost'],
     superEffective: ['grass', 'fairy']
   },
   ground: {
-    noEffect: ['electric'],
+    noEffect: ['flying'],
     notEffective: ['grass', 'bug'],
     superEffective: ['fire', 'electric', 'poison', 'rock', 'steel']
   },
   flying: {
-    noEffect: ['ground'],
+    noEffect: [],
     notEffective: ['electric', 'rock', 'steel'],
     superEffective: ['grass', 'fighting', 'bug']
   },
   psychic: {
-    noEffect: [],
+    noEffect: ['dark'],
     notEffective: ['psychic', 'steel'],
     superEffective: ['fighting', 'poison']
   },
@@ -67,27 +68,27 @@ const pokemonTypes = {
     superEffective: ['fire', 'ice', 'flying', 'bug']
   },
   ghost: {
-    noEffect: ['normal', 'fighting'],
+    noEffect: ['normal'],
     notEffective: ['dark'],
     superEffective: ['psychic', 'ghost']
   },
   dragon: {
-    noEffect: [],
+    noEffect: ['fairy'],
     notEffective: ['steel'],
     superEffective: ['dragon']
   },
   dark: {
-    noEffect: ['psychic'],
+    noEffect: [],
     notEffective: ['fighting', 'dark', 'fairy'],
     superEffective: ['psychic', 'ghost']
   },
   steel: {
-    noEffect: ['poison'],
+    noEffect: [],
     notEffective: ['fire', 'water', 'electric', 'steel'],
     superEffective: ['ice', 'rock', 'fairy']
   },
   fairy: {
-    noEffect: ['dragon'],
+    noEffect: [],
     notEffective: ['fire', 'poison', 'steel'],
     superEffective: ['fighting', 'dragon', 'dark']
   }
