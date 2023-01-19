@@ -51,6 +51,14 @@ input {
   border: 1px solid #678983;
 }
 
+img {
+  pointer-events: none;
+}
+
+span {
+  pointer-events: none;
+}
+
 footer {
   margin-left: 5px;
   margin-bottom: 5px;

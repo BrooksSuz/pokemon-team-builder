@@ -5,8 +5,12 @@ import Header from "./HeaderComponents/Header";
 import PokemonParty from "./PokemonPartyComponents/PokemonParty";
 import PaldeaPokedex from "./PaldeaPokedexComponents/PaldeaPokedex";
 import TypeChart from "./TypeChartComponents/TypeChart";
-import "../styles/Reset.css";
-import "../styles/App.css";
+import "../styles/app.css";
+import "../styles/header.css";
+import "../styles/paldeaPokedex.css";
+import "../styles/pokemonParty.css";
+import "../styles/reset.css";
+import "../styles/typeChart.css";
 
 const App = () => {
   /*

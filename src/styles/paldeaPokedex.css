@@ -43,14 +43,6 @@
   max-width: 90%;
 }
 
-img {
-  pointer-events: none;
-}
-
-span {
-  pointer-events: none;
-}
-
 @media (max-width: 1024px) {
   .pokemon-list {
     margin: 0 5px;
