@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import Logout from "../HeaderComponents/Logout";
-import FormTeamSelection from "../HeaderComponents/FormTeamSelection";
-import FormLogin from "../HeaderComponents/FormLogin";
-import FormCreateAccount from "../HeaderComponents/FormCreateAccount";
+import Logout from "./Logout";
+import FormTeamSelection from "./TeamSelection";
+import FormLogin from "./FormLogin";
+import FormCreateAccount from "./FormCreateAccount";
 
 const Header = (props) => {
   const {

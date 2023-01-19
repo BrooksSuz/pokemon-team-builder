@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { auth } from "../firebase.config";
 import { onAuthStateChanged } from "firebase/auth";
-import Header from "./AppComponents/Header";
-import PokemonParty from "./AppComponents/PokemonParty";
-import PaldeaPokedex from "./AppComponents/PaldeaPokedex";
-import TypeChart from "./AppComponents/TypeChart";
+import Header from "./HeaderComponents/Header";
+import PokemonParty from "./PokemonPartyComponents/PokemonParty";
+import PaldeaPokedex from "./PaldeaPokedexComponents/PaldeaPokedex";
+import TypeChart from "./TypeChartComponents/TypeChart";
 import "../styles/Reset.css";
 import "../styles/App.css";
 

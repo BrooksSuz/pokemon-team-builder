@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PokemonCard from "../PaldeaPokedexComponents/PokemonCard";
+import PokemonCard from "./PokemonCard";
 import { getPaldeaPokedex, getPokemonTypes } from "../../firebase-functions";
 import "../../styles/PaldeaPokedex.css";
 

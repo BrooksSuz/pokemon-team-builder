@@ -1,4 +1,4 @@
-import TypeSlot from "../TypeChartComponents/TypeSlot";
+import TypeSlot from "./TypeSlot";
 import "../../styles/TypeChart.css";
 
 const TypeChart = (props) => {
