@@ -13,6 +13,13 @@ const blankParty = Array.from({ length: 6 }, () => {
 });
 let userUID = '';
 
+// Persist user if they're signed in
+onAuthStateChanged(auth, currentUser => {
+  if (currentUser) {
+    userUID = currentUser.uid;
+  }
+});
+
 // Get pokemon name and sprite
 const getPaldeaPokedex = async () => {
   const mySnapshot = await getDoc(paldeaPokedexRef);
@@ -88,13 +95,6 @@ const updateParty = async (arr, clickedButton) => {
     });
   }
 };
-
-// Persist user if they're signed in
-onAuthStateChanged(auth, currentUser => {
-  if (currentUser) {
-    userUID = currentUser.uid;
-  }
-});
 
 // Log user out
 const logout = async () => {
