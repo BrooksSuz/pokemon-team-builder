@@ -14,7 +14,9 @@ const TeamSelection = (props) => {
     updateParty(party, currentParty).then(alert('Party updated!'));
   };
 
-  // On userSignedIn update to true, get current user's party 1
+  /*
+    On userSignedIn update to true, get current user's party 1. Then, set the current party to party 1.
+  */
   useEffect(() => {
     if (userSignedIn) {
       getParties().then(res => setParty(res.parties['party-1']));

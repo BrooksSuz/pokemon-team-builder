@@ -78,18 +78,18 @@ const getParties = async () => {
 };
 
 // Add/update the user's parties
-const updateParty = async (arr, clickedButton) => {
+const updateParty = async (arr, currentParty) => {
   const userRef = doc(firestore, 'users', userUID);
 
-  if (clickedButton === 'party-1') {
+  if (currentParty === 'party-1') {
     await updateDoc(userRef, {
       'parties.party-1': arr
     });
-  } else if (clickedButton === 'party-2') {
+  } else if (currentParty === 'party-2') {
     await updateDoc(userRef, {
       'parties.party-2': arr
     });
-  } else if (clickedButton === 'party-3') {
+  } else if (currentParty === 'party-3') {
     await updateDoc(userRef, {
       'parties.party-3': arr
     });
