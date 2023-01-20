@@ -25,5 +25,4 @@ If a user searches one of the pokemon with a hyphen in it's name, the pokemon ca
 The app isn't as aesthetically pleasing as I'd like it to be. For example, the type chart component currently uses strings to display information. I'd like to replace the strings with each type's respective type symbol.
 
 ## Test Account
-Email: pokefan1390@gmail.com
-Password: pokefan1390
+Email: pokefan1390@gmail.com | Password: pokefan1390
