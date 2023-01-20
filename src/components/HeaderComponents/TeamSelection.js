@@ -18,6 +18,7 @@ const TeamSelection = (props) => {
   useEffect(() => {
     if (userSignedIn) {
       getParties().then(res => setParty(res.parties['party-1']));
+      setCurrentParty('party-1');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userSignedIn]);
