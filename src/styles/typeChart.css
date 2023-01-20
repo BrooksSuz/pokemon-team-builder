@@ -2,18 +2,12 @@
   margin-left: 5px;
   grid-area: type-chart;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   overflow-y: auto;
 }
 
-div[class^=type-slot] h3 {
-  min-width: 100%;
-  margin-top: 5px;
-  border-top: 1px solid #F0E9D2;
-}
-
 div[class^=type-slot] {
+  padding: 0 0.2rem;
   min-height: 100%;
   font-size: 14px;
   border-left: 1px solid #F0E9D2;
@@ -24,8 +18,10 @@ div[class^=type-slot] {
   flex: 1;
 }
 
-div[class^=type-slot] span {
-  margin-right: 0.5rem;
+div[class^=type-slot] h3 {
+  min-width: 100%;
+  margin-top: 5px;
+  border-top: 1px solid #F0E9D2;
 }
 
 div[class^=type-slot-1] {
