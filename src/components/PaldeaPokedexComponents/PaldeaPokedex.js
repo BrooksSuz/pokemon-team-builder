@@ -6,22 +6,31 @@ const PaldeaPokedex = (props) => {
   const {party, setParty} = props;
   const [searchTerm, setSearchTerm] = useState('');
   const [pokedex, setPokedex] = useState({ poke: [], types: [] });
+  const copyPokedex = Object.assign({}, pokedex);
 
   // Get pokemon data from backend
   const fillPokedex = async () => {
-    const copyPokedex = Object.assign({}, pokedex);
     const paldeaPokedex = await getPaldeaPokedex();
     const paldeaTypes = await getPokemonTypes();
 
     copyPokedex.poke = paldeaPokedex;
     copyPokedex.types = paldeaTypes;
 
+    return copyPokedex;
+  };
+
+  // Change first letters of names to uppercase
+  const formatNames = copyPokedex => {
+    const toUpper = copyPokedex.poke.map(poke => {
+      return poke.slice().replace(/\b[a-z]/g, letter => letter.toUpperCase());
+    });
+
+    copyPokedex.poke = toUpper;
     setPokedex(copyPokedex);
   };
 
-  // On mount, fill pokedex variable with all Paldea Pokemon names & types
   useEffect(() => {
-    fillPokedex();
+    fillPokedex().then(res => formatNames(res));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,7 +51,7 @@ const PaldeaPokedex = (props) => {
           // First, filter based upon searchTerm value (pokemon name or type)
           pokedex.poke
             .filter((pokemon, i) => {
-              return searchTerm === ''
+              return !searchTerm
                 ? pokemon
                 : pokemon.slice().toLowerCase().includes(searchTerm.slice().toLowerCase()) || pokedex.types[i].slice().toLowerCase().includes(searchTerm.slice().toLowerCase());
             })
