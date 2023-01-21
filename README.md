@@ -20,8 +20,6 @@ If the user would like to save their parties, then they will have to create an a
 
 ## Future QOL Updates: 
 
-If a user searches one of the pokemon with a hyphen in it's name, the pokemon card returns a space instead of a hyphen. This is a logic error and I will fix it when I have the time to debug it.
-
 The app isn't as aesthetically pleasing as I'd like it to be. For example, the type chart component currently uses strings to display information. I'd like to replace the strings with each type's respective type symbol.
 
 ## Test Account
