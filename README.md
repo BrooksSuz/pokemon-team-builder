@@ -16,7 +16,7 @@ The app is pretty simple. The user can scroll/search for a pokemon in the pokede
 
 If the user would like to delete pokemon, they may click the "Delete Pokemon" button below the pokemon's name in their party. Or, if they want to delete their entire party, they can click the "Delete Entire Party" button at the top of the app.
 
-If the user would like to save their parties, then they will have to create an account. There is an email and password provided at the end of this document to test the app on. A user can have up to three parties per account. To save pokemon to a party, the user must click on the party button they would like to save the party to. Then simply click the "Save/Update Team" button to save or update their team. To access a saved team, simply click the party button they would like to see. 
+If the user would like to save their parties, then they will have to create an account. There is an email and password provided at the end of this document to test this feature. A user can have up to three parties per account. To save pokemon to a party, the user must click on the party button they would like to save the party to. Then simply click the "Save/Update Team" button to save or update their team. To access a saved team, simply click the party button they would like to see. 
 
 ## Future QOL Updates: 
 
