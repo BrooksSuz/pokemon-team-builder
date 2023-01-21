@@ -4,6 +4,12 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.type-chart::-webkit-scrollbar {
+  display: none;
 }
 
 div[class^=type-slot] {
